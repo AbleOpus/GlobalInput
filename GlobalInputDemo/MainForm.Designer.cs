@@ -37,42 +37,50 @@ namespace GlobalInputDemo
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.GroupBox groupBox1;
+            System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+            System.Windows.Forms.Label label3;
+            System.Windows.Forms.Label label2;
+            System.Windows.Forms.Label label1;
+            System.Windows.Forms.GroupBox groupBoxMouse;
+            System.Windows.Forms.GroupBox groupBox3;
+            System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+            System.Windows.Forms.GroupBox groupBox2;
             this.checkBoxInvokeEnabled = new System.Windows.Forms.CheckBox();
             this.buttonUnbindAll = new System.Windows.Forms.Button();
             this.buttonUnbindSelected = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.listBoxBindings = new System.Windows.Forms.ListBox();
             this.listBoxHKLog = new System.Windows.Forms.ListBox();
             this.contextMenuLogList = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuItemClear = new System.Windows.Forms.ToolStripMenuItem();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.buttonBind = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.groupBoxMouse = new System.Windows.Forms.GroupBox();
             this.checkBoxMouseCallNext = new System.Windows.Forms.CheckBox();
             this.labelMousePos = new System.Windows.Forms.Label();
             this.checkBoxMouseHookerEnabled = new System.Windows.Forms.CheckBox();
             this.listBoxMousing = new System.Windows.Forms.ListBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.checkBoxKeyCallNext = new System.Windows.Forms.CheckBox();
             this.checkBoxKeyboardHookEnabled = new System.Windows.Forms.CheckBox();
             this.listBoxKeyboardHook = new System.Windows.Forms.ListBox();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.buttonFindOccupied = new System.Windows.Forms.Button();
             this.listBoxOccupied = new System.Windows.Forms.ListBox();
             this.hotkeyTextBox = new GlobalInput.Forms.HotKeyTextBox();
             this.keyboardHooker = new GlobalInput.Keyboard.KeyboardHooker();
             this.mouseHooker = new GlobalInput.Mouse.MouseHooker();
             groupBox1 = new System.Windows.Forms.GroupBox();
+            tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            label3 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            label1 = new System.Windows.Forms.Label();
+            groupBoxMouse = new System.Windows.Forms.GroupBox();
+            groupBox3 = new System.Windows.Forms.GroupBox();
+            tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            groupBox2 = new System.Windows.Forms.GroupBox();
             groupBox1.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
             this.contextMenuLogList.SuspendLayout();
-            this.groupBoxMouse.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            groupBoxMouse.SuspendLayout();
+            groupBox3.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
+            groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -80,10 +88,10 @@ namespace GlobalInputDemo
             groupBox1.Controls.Add(this.checkBoxInvokeEnabled);
             groupBox1.Controls.Add(this.buttonUnbindAll);
             groupBox1.Controls.Add(this.buttonUnbindSelected);
-            groupBox1.Controls.Add(this.tableLayoutPanel1);
+            groupBox1.Controls.Add(tableLayoutPanel1);
             groupBox1.Controls.Add(this.buttonBind);
             groupBox1.Controls.Add(this.hotkeyTextBox);
-            groupBox1.Controls.Add(this.label1);
+            groupBox1.Controls.Add(label1);
             groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             groupBox1.Location = new System.Drawing.Point(3, 3);
             groupBox1.Name = "groupBox1";
@@ -127,23 +135,23 @@ namespace GlobalInputDemo
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.listBoxBindings, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.listBoxHKLog, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 45);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(412, 80);
-            this.tableLayoutPanel1.TabIndex = 6;
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel1.Controls.Add(this.listBoxBindings, 0, 1);
+            tableLayoutPanel1.Controls.Add(this.listBoxHKLog, 1, 1);
+            tableLayoutPanel1.Controls.Add(label3, 0, 0);
+            tableLayoutPanel1.Controls.Add(label2, 1, 0);
+            tableLayoutPanel1.Location = new System.Drawing.Point(6, 45);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 2;
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanel1.Size = new System.Drawing.Size(412, 80);
+            tableLayoutPanel1.TabIndex = 6;
             // 
             // listBoxBindings
             // 
@@ -189,21 +197,21 @@ namespace GlobalInputDemo
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(50, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Bindings:";
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(3, 0);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(50, 13);
+            label3.TabIndex = 9;
+            label3.Text = "Bindings:";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(209, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Log:";
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(209, 0);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(28, 13);
+            label2.TabIndex = 6;
+            label2.Text = "Log:";
             // 
             // buttonBind
             // 
@@ -218,26 +226,26 @@ namespace GlobalInputDemo
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Hotkey";
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(6, 22);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(41, 13);
+            label1.TabIndex = 1;
+            label1.Text = "Hotkey";
             // 
             // groupBoxMouse
             // 
-            this.groupBoxMouse.Controls.Add(this.checkBoxMouseCallNext);
-            this.groupBoxMouse.Controls.Add(this.labelMousePos);
-            this.groupBoxMouse.Controls.Add(this.checkBoxMouseHookerEnabled);
-            this.groupBoxMouse.Controls.Add(this.listBoxMousing);
-            this.groupBoxMouse.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxMouse.Location = new System.Drawing.Point(3, 337);
-            this.groupBoxMouse.Name = "groupBoxMouse";
-            this.groupBoxMouse.Size = new System.Drawing.Size(424, 161);
-            this.groupBoxMouse.TabIndex = 4;
-            this.groupBoxMouse.TabStop = false;
-            this.groupBoxMouse.Text = "Mouse";
+            groupBoxMouse.Controls.Add(this.checkBoxMouseCallNext);
+            groupBoxMouse.Controls.Add(this.labelMousePos);
+            groupBoxMouse.Controls.Add(this.checkBoxMouseHookerEnabled);
+            groupBoxMouse.Controls.Add(this.listBoxMousing);
+            groupBoxMouse.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBoxMouse.Location = new System.Drawing.Point(3, 337);
+            groupBoxMouse.Name = "groupBoxMouse";
+            groupBoxMouse.Size = new System.Drawing.Size(424, 161);
+            groupBoxMouse.TabIndex = 4;
+            groupBoxMouse.TabStop = false;
+            groupBoxMouse.Text = "Mouse";
             // 
             // checkBoxMouseCallNext
             // 
@@ -287,16 +295,16 @@ namespace GlobalInputDemo
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.checkBoxKeyCallNext);
-            this.groupBox3.Controls.Add(this.checkBoxKeyboardHookEnabled);
-            this.groupBox3.Controls.Add(this.listBoxKeyboardHook);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(3, 170);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(424, 161);
-            this.groupBox3.TabIndex = 5;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Keyboard hook";
+            groupBox3.Controls.Add(this.checkBoxKeyCallNext);
+            groupBox3.Controls.Add(this.checkBoxKeyboardHookEnabled);
+            groupBox3.Controls.Add(this.listBoxKeyboardHook);
+            groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBox3.Location = new System.Drawing.Point(3, 170);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new System.Drawing.Size(424, 161);
+            groupBox3.TabIndex = 5;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Keyboard hook";
             // 
             // checkBoxKeyCallNext
             // 
@@ -337,35 +345,35 @@ namespace GlobalInputDemo
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(groupBox1, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.groupBoxMouse, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.groupBox3, 0, 1);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(12, 12);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 3;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(430, 501);
-            this.tableLayoutPanel2.TabIndex = 6;
+            tableLayoutPanel2.ColumnCount = 1;
+            tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanel2.Controls.Add(groupBox1, 0, 0);
+            tableLayoutPanel2.Controls.Add(groupBoxMouse, 0, 2);
+            tableLayoutPanel2.Controls.Add(groupBox3, 0, 1);
+            tableLayoutPanel2.Location = new System.Drawing.Point(12, 12);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 3;
+            tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            tableLayoutPanel2.Size = new System.Drawing.Size(430, 501);
+            tableLayoutPanel2.TabIndex = 6;
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.buttonFindOccupied);
-            this.groupBox2.Controls.Add(this.listBoxOccupied);
-            this.groupBox2.Location = new System.Drawing.Point(448, 12);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(233, 501);
-            this.groupBox2.TabIndex = 7;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Occupied Hooks";
+            groupBox2.Controls.Add(this.buttonFindOccupied);
+            groupBox2.Controls.Add(this.listBoxOccupied);
+            groupBox2.Location = new System.Drawing.Point(448, 12);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new System.Drawing.Size(233, 501);
+            groupBox2.TabIndex = 7;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Occupied Hooks";
             // 
             // buttonFindOccupied
             // 
@@ -422,23 +430,23 @@ namespace GlobalInputDemo
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(693, 525);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.tableLayoutPanel2);
+            this.Controls.Add(groupBox2);
+            this.Controls.Add(tableLayoutPanel2);
             this.DoubleBuffered = true;
             this.MinimumSize = new System.Drawing.Size(481, 528);
             this.Name = "MainForm";
             this.Text = "Global Input Demo";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
             this.contextMenuLogList.ResumeLayout(false);
-            this.groupBoxMouse.ResumeLayout(false);
-            this.groupBoxMouse.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
+            groupBoxMouse.ResumeLayout(false);
+            groupBoxMouse.PerformLayout();
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
+            tableLayoutPanel2.ResumeLayout(false);
+            groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -446,23 +454,16 @@ namespace GlobalInputDemo
         #endregion
 
         private HotKeyTextBox hotkeyTextBox;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox listBoxMousing;
-        private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ListBox listBoxKeyboardHook;
         private System.Windows.Forms.Button buttonBind;
         private System.Windows.Forms.CheckBox checkBoxKeyboardHookEnabled;
         private System.Windows.Forms.CheckBox checkBoxMouseHookerEnabled;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.ListBox listBoxBindings;
         private System.Windows.Forms.ListBox listBoxHKLog;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonUnbindAll;
         private System.Windows.Forms.Button buttonUnbindSelected;
         private System.Windows.Forms.CheckBox checkBoxInvokeEnabled;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.GroupBox groupBoxMouse;
         private System.Windows.Forms.ContextMenuStrip contextMenuLogList;
         private System.Windows.Forms.ToolStripMenuItem menuItemClear;
         private System.Windows.Forms.Label labelMousePos;
@@ -470,7 +471,6 @@ namespace GlobalInputDemo
         private System.Windows.Forms.CheckBox checkBoxMouseCallNext;
         private GlobalInput.Keyboard.KeyboardHooker keyboardHooker;
         private GlobalInput.Mouse.MouseHooker mouseHooker;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button buttonFindOccupied;
         private System.Windows.Forms.ListBox listBoxOccupied;
     }
