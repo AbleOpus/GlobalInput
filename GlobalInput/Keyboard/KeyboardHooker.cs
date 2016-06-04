@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -15,11 +16,13 @@ namespace GlobalInput.Keyboard
         /// <summary>
         /// Occurs when a key been depressed.
         /// </summary>
+        [Description("Occurs when a key been depressed."), Category("Key")]
         public event EventHandler<KeyEventArgs> KeyDown;
 
         /// <summary>
         /// Occurs when a key has been unpressed.
         /// </summary>
+        [Description("Occurs when a key been unpressed."), Category("Key")]
         public event EventHandler<KeyEventArgs> KeyUp;
 
         /// <summary>
