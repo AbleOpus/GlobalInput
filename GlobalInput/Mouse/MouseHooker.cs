@@ -8,7 +8,6 @@ namespace GlobalInput.Mouse
     /// <summary>
     /// Represents a system-wide mouse hooker.
     /// </summary>
-    [ToolboxItem("sdsdssdsds. eddf.")]
     public sealed class MouseHooker : LowLevelHooker
     {
         /// <summary>
