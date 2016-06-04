@@ -19,8 +19,8 @@ namespace GlobalInputDemo
         public MainForm()
         {
             InitializeComponent();
+
             // Setup keyboard hooks
-            hotkeyTextBox.Hotkey = Keys.F5;
             hotkeyTextBox.AllowSoloModifiers = true;
             listBoxBindings.DataSource = hotKeyHooker.HotkeyBindings;
             // Setup checkbox bindings
