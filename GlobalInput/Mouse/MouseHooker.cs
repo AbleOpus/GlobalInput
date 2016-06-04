@@ -23,21 +23,25 @@ namespace GlobalInput.Mouse
         /// <summary>
         /// Occurs when the mouse wheel scrolls.
         /// </summary>
+        [Description("Occurs when the mouse wheel scrolls."), Category("Mouse")]
         public event MouseEventHandler MouseWheel;
 
         /// <summary>
         /// Occurs when the mouse has moved.
         /// </summary>
+        [Description("Occurs when the mouse has moved."), Category("Mouse")]
         public event MouseEventHandler MouseMoved;
 
         /// <summary>
         /// Occurs when a mouse button has been released.
         /// </summary>
+        [Description("Occurs when a mouse button has been released."), Category("Mouse")]
         public event MouseEventHandler MouseUp;
 
         /// <summary>
         /// Occurs when a mouse button has been depressed.
         /// </summary>
+        [Description("Occurs when a mouse button has been depressed."), Category("Mouse")]
         public event MouseEventHandler MouseDown;
         #endregion
 
