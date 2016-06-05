@@ -82,21 +82,6 @@ namespace GlobalInput.Keyboard
         }
 
         /// <summary>
-        /// Gets whether the specified key is being pressed.
-        /// </summary>
-        public static bool IsKeyPressed(this Keys key)
-        {
-            short result = NativeMethods.GetKeyState(key);
-
-            switch (result)
-            {
-                case 0: return false;
-                case 1: return false;
-                default: return true;
-            }
-        }
-
-        /// <summary>
         /// Converts <see cref="Modifiers"/> to <see cref="Keys"/>.
         /// </summary>
         /// <param name="modifiers">The <see cref="Modifiers"/> to convert.</param>
