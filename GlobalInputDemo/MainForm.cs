@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Windows.Forms;
 using GlobalInput.Keyboard;
 using GlobalInput.Keyboard.KeyNaming;
@@ -140,10 +139,18 @@ namespace GlobalInputDemo
 
             foreach (var keys in occupied)
             {
-                listBoxOccupied.Items.Add(KeyNaming.KeyDataToString(keys));
+                listBoxOccupied.Items.Add(keys.KeyDataToString());
             }
 
             buttonFindOccupied.Enabled = true;
+        }
+
+        private void menuItemKeysVisualizer_Click(object sender, EventArgs e)
+        {
+            using (var dialog = new KeysEnumVisualizerDialog())
+            {
+                dialog.ShowDialog();
+            }
         }
     }
 }
