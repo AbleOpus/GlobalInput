@@ -15,7 +15,15 @@ namespace GlobalInput.Keyboard.KeyNaming
         {
             switch (key)
             {
-                // I decided to not space the words, as it makes the sequence as a whole, more readable.
+                // Mods.
+                case Keys.RShiftKey: return "Right Shift";
+                case Keys.LShiftKey: return "Left Shift";
+                case Keys.LControlKey: return "Left Ctrl";
+                case Keys.RControlKey: return "Right Ctrl";
+                case Keys.LMenu: return "Left Alt";
+                case Keys.RMenu: return "Right Alt";
+                // Non-mods.
+                case Keys.Back: return "Backspace";
                 case Keys.Oem1: return "Semicolon";
                 case Keys.OemOpenBrackets: return"Open Bracket";
                 case Keys.Oem6: return"Close Bracket";
