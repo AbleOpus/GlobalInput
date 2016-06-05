@@ -55,8 +55,8 @@ namespace GlobalInput.Keyboard
         /// <returns>True, if a toggle key is found, otherwise false.</returns>
         public static bool HasToggleKey(this Keys keyData)
         {
-            Keys[] toggleKeys = {Keys.Tab, Keys.NumLock, Keys.Capital, Keys.Scroll};
-            return toggleKeys.Any(key => (keyData & Keys.KeyCode) == key);
+            Keys[] toggleKeys = {Keys.NumLock, Keys.Capital, Keys.Scroll};
+            return toggleKeys.Any(key => keyData.GetKeyCode() == key);
         }
 
         /// <summary>
@@ -79,6 +79,22 @@ namespace GlobalInput.Keyboard
                 keyCode != Keys.ControlKey;
 
             return !hasNonMod && hasModifiers;
+        }
+
+        /// <summary>
+        /// Extracts the modifiers from the specified keys.
+        /// </summary>
+        public static Keys GetModifiers(this Keys keys)
+        {
+            return keys & Keys.Modifiers;
+        }
+
+        /// <summary>
+        /// Extracts the key code (or nonmods) from the specified keys.
+        /// </summary>
+        public static Keys GetKeyCode(this Keys keys)
+        {
+            return keys & Keys.KeyCode;
         }
     }
 }
