@@ -9,7 +9,7 @@ namespace GlobalInput.Forms
     /// <summary>
     /// Represents a <see cref="TextBox"/> control for hotkey picking.
     /// </summary>
-    public class HotKeyTextBox : TextBox
+    public class HotkeyTextBox : TextBox
     {
         #region Properties
         /// <summary>
@@ -54,7 +54,7 @@ namespace GlobalInput.Forms
                 }
 
                 hotkey = value;
-                Text = KeyNaming.KeyDataToString(Hotkey);
+                Text = Hotkey.KeyDataToString();
             }
         }
 
@@ -128,9 +128,9 @@ namespace GlobalInput.Forms
         #endregion
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HotKeyTextBox"/> class.
+        /// Initializes a new instance of the <see cref="HotkeyTextBox"/> class.
         /// </summary>
-        public HotKeyTextBox()
+        public HotkeyTextBox()
         {
             base.Text = NoKeyString;
             GotFocus += delegate { NativeMethods.HideCaret(Handle); };
@@ -192,12 +192,6 @@ namespace GlobalInput.Forms
                     e.Handled = true;
                     break;
             }
-
-           // if (printScreenPressed)
-            //{
-           //     Hotkey = (e.Modifiers | Keys.PrintScreen);
-            //    printScreenPressed = false;
-          //  }
 
             Hotkey = e.KeyData;
         }

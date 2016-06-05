@@ -53,6 +53,7 @@ namespace GlobalInputDemo
             this.contextMenuLogList = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuItemClear = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonBind = new System.Windows.Forms.Button();
+            this.hotkeyTextBox = new GlobalInput.Forms.HotkeyTextBox();
             this.checkBoxMouseCallNext = new System.Windows.Forms.CheckBox();
             this.labelMousePos = new System.Windows.Forms.Label();
             this.checkBoxMouseHookerEnabled = new System.Windows.Forms.CheckBox();
@@ -62,7 +63,6 @@ namespace GlobalInputDemo
             this.listBoxKeyboardHook = new System.Windows.Forms.ListBox();
             this.buttonFindOccupied = new System.Windows.Forms.Button();
             this.listBoxOccupied = new System.Windows.Forms.ListBox();
-            this.hotkeyTextBox = new GlobalInput.Forms.HotKeyTextBox();
             this.keyboardHooker = new GlobalInput.Keyboard.KeyboardHooker();
             this.mouseHooker = new GlobalInput.Mouse.MouseHooker();
             groupBox1 = new System.Windows.Forms.GroupBox();
@@ -223,6 +223,19 @@ namespace GlobalInputDemo
             this.buttonBind.Text = "Bind";
             this.buttonBind.UseVisualStyleBackColor = true;
             this.buttonBind.Click += new System.EventHandler(this.buttonBind_Click);
+            // 
+            // hotkeyTextBox
+            // 
+            this.hotkeyTextBox.AllowSoloModifiers = true;
+            this.hotkeyTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.hotkeyTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.hotkeyTextBox.HotkeyKeyCode = System.Windows.Forms.Keys.None;
+            this.hotkeyTextBox.HotkeyModifiers = System.Windows.Forms.Keys.None;
+            this.hotkeyTextBox.Location = new System.Drawing.Point(53, 19);
+            this.hotkeyTextBox.Name = "hotkeyTextBox";
+            this.hotkeyTextBox.Size = new System.Drawing.Size(284, 20);
+            this.hotkeyTextBox.TabIndex = 0;
             // 
             // label1
             // 
@@ -400,20 +413,6 @@ namespace GlobalInputDemo
             this.listBoxOccupied.Size = new System.Drawing.Size(221, 447);
             this.listBoxOccupied.TabIndex = 0;
             // 
-            // hotkeyTextBox
-            // 
-            this.hotkeyTextBox.AllowSoloModifiers = true;
-            this.hotkeyTextBox.AllowToggleKeys = true;
-            this.hotkeyTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.hotkeyTextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.hotkeyTextBox.HotkeyKeyCode = System.Windows.Forms.Keys.None;
-            this.hotkeyTextBox.HotkeyModifiers = System.Windows.Forms.Keys.None;
-            this.hotkeyTextBox.Location = new System.Drawing.Point(53, 19);
-            this.hotkeyTextBox.Name = "hotkeyTextBox";
-            this.hotkeyTextBox.Size = new System.Drawing.Size(284, 20);
-            this.hotkeyTextBox.TabIndex = 0;
-            // 
             // keyboardHooker
             // 
             this.keyboardHooker.KeyDown += new System.EventHandler<System.Windows.Forms.KeyEventArgs>(this.keyboardHooker_KeyDown);
@@ -454,7 +453,7 @@ namespace GlobalInputDemo
 
         #endregion
 
-        private HotKeyTextBox hotkeyTextBox;
+        private HotkeyTextBox hotkeyTextBox;
         private System.Windows.Forms.ListBox listBoxMousing;
         private System.Windows.Forms.ListBox listBoxKeyboardHook;
         private System.Windows.Forms.Button buttonBind;

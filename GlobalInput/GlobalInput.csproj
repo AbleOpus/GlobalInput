@@ -52,7 +52,7 @@
       <DependentUpon>LowLevelHooker.cs</DependentUpon>
     </Compile>
     <Compile Include="Keyboard\ExtensionMethods.cs" />
-    <Compile Include="Forms\HotKeyTextBox.cs">
+    <Compile Include="Forms\HotkeyTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Keyboard\HotkeyAlreadyBoundException.cs" />
