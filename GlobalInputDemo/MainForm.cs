@@ -118,7 +118,7 @@ namespace GlobalInputDemo
 
         private void mouseHooker_MouseMoved(object sender, MouseEventArgs e)
         {
-            labelMousePos.Text = $@"Mouse Position: {e.X} x {e.Y}";
+            labelMousePos.Text = $@"Mouse Position: {e.X}, {e.Y}";
         }
 
         private void mouseHooker_MouseUp(object sender, MouseEventArgs e)

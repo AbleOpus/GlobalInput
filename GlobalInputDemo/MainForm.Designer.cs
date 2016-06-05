@@ -260,8 +260,9 @@ namespace GlobalInputDemo
             // 
             // labelMousePos
             // 
+            this.labelMousePos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelMousePos.AutoSize = true;
-            this.labelMousePos.Location = new System.Drawing.Point(6, 163);
+            this.labelMousePos.Location = new System.Drawing.Point(6, 140);
             this.labelMousePos.Name = "labelMousePos";
             this.labelMousePos.Size = new System.Drawing.Size(105, 13);
             this.labelMousePos.TabIndex = 7;
