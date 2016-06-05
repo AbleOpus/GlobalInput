@@ -80,25 +80,5 @@ namespace GlobalInput.Keyboard
 
             return !hasNonMod && hasModifiers;
         }
-
-        /// <summary>
-        /// Converts <see cref="Modifiers"/> to <see cref="Keys"/>.
-        /// </summary>
-        /// <param name="modifiers">The <see cref="Modifiers"/> to convert.</param>
-        internal static Keys ToKeys(this Modifiers modifiers)
-        {
-            var keys = Keys.None;
-
-            if (modifiers.HasFlag(Modifiers.Alt))
-                keys |= Keys.Alt;
-
-            if (modifiers.HasFlag(Modifiers.Control))
-                keys |= Keys.Control;
-
-            if (modifiers.HasFlag(Modifiers.Shift))
-                keys |= Keys.Shift;
-
-            return keys;
-        }
     }
 }
