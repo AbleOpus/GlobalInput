@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -50,61 +51,72 @@ namespace GlobalInput.Mouse
         /// </summary>
         protected override void ProcHookCallback(IntPtr wParam, IntPtr lParam)
         {
-            var hookStruct = (MousehookStruct)Marshal.PtrToStructure(lParam, typeof(MousehookStruct));
+            var mouseData = (MousehookStruct)Marshal.PtrToStructure(lParam, typeof(MousehookStruct));
 
-            // Process message and raise the appropriate event
             switch ((MouseMessages)wParam)
             {
                 case MouseMessages.MouseMove:
                     if (!MessageFilter.HasFlag(MouseMessageTypes.Move)) break;
-                    var mouseButtons = (MouseButtons)hookStruct.Flags;
-                    var args = new MouseEventArgs(mouseButtons, 0, hookStruct.Point.X, hookStruct.Point.Y, 0);
+                    var mouseButtons = (MouseButtons)mouseData.Flags;
+                    var args = new MouseEventArgs(mouseButtons, 0, mouseData.Point.X, mouseData.Point.Y, 0);
                     MouseMoved?.Invoke(this, args);
-                    break;
+                    return; // For easier debugging. Data may be written to output window below.
 
                 case MouseMessages.RightButtonDown:
                     if (!MessageFilter.HasFlag(MouseMessageTypes.ButtonDown)) break;
-                    args = new MouseEventArgs(MouseButtons.Right, 0, hookStruct.Point.X, hookStruct.Point.Y, 0);
+                    args = new MouseEventArgs(MouseButtons.Right, 0, mouseData.Point.X, mouseData.Point.Y, 0);
                     MouseDown?.Invoke(this, args);
                     break;
 
                 case MouseMessages.LeftButtonDown:
                     if (!MessageFilter.HasFlag(MouseMessageTypes.ButtonDown)) break;
-                    args = new MouseEventArgs(MouseButtons.Left, 0, hookStruct.Point.X, hookStruct.Point.Y, 0);
+                    args = new MouseEventArgs(MouseButtons.Left, 0, mouseData.Point.X, mouseData.Point.Y, 0);
                     MouseDown?.Invoke(this, args);
                     break;
 
                 case MouseMessages.RightButtonUp:
                     if (!MessageFilter.HasFlag(MouseMessageTypes.ButtonUp)) break;
-                    args = new MouseEventArgs(MouseButtons.Right, 0, hookStruct.Point.X, hookStruct.Point.Y, 0);
+                    args = new MouseEventArgs(MouseButtons.Right, 0, mouseData.Point.X, mouseData.Point.Y, 0);
                     MouseUp?.Invoke(this, args);
                     break;
 
                 case MouseMessages.LeftButtonUp:
                     if (!MessageFilter.HasFlag(MouseMessageTypes.ButtonUp)) break;
-                    args = new MouseEventArgs(MouseButtons.Left, 0, hookStruct.Point.X, hookStruct.Point.Y, 0);
+                    args = new MouseEventArgs(MouseButtons.Left, 0, mouseData.Point.X, mouseData.Point.Y, 0);
                     MouseUp?.Invoke(this, args);
                     break;
 
                 case MouseMessages.WheelScrolled:
                     if (!MessageFilter.HasFlag(MouseMessageTypes.Wheel)) break;
-                    var mouseDelta = (short)((hookStruct.MouseData >> 16) & 0xffff);
-                    args = new MouseEventArgs(MouseButtons.Middle, 0, hookStruct.Point.X, hookStruct.Point.Y, mouseDelta);
+                    var mouseDelta = (short)((mouseData.MouseData >> 16) & 0xffff);
+                    args = new MouseEventArgs(MouseButtons.Middle, 0, mouseData.Point.X, mouseData.Point.Y, mouseDelta);
                     MouseWheel?.Invoke(this, args);
                     break;
 
                 case MouseMessages.WheelDown:
                     if (!MessageFilter.HasFlag(MouseMessageTypes.Wheel)) break;
-                    args = new MouseEventArgs(MouseButtons.Middle, 0, hookStruct.Point.X, hookStruct.Point.Y, 0);
+                    args = new MouseEventArgs(MouseButtons.Middle, 0, mouseData.Point.X, mouseData.Point.Y, 0);
                     MouseDown?.Invoke(this, args);
                     break;
 
                 case MouseMessages.WheelUp:
                     if (!MessageFilter.HasFlag(MouseMessageTypes.Wheel)) break;
-                    args = new MouseEventArgs(MouseButtons.Middle, 0, hookStruct.Point.X, hookStruct.Point.Y, 0);
+                    args = new MouseEventArgs(MouseButtons.Middle, 0, mouseData.Point.X, mouseData.Point.Y, 0);
                     MouseUp?.Invoke(this, args);
                     break;
+
+                case MouseMessages.XButtonDown:
+                    var mouseButton = (MouseXButtons)mouseData.MouseData == MouseXButtons.X1 ? MouseButtons.XButton1 : MouseButtons.XButton2;
+                    MouseDown?.Invoke(this, new MouseEventArgs(mouseButton, 0, mouseData.Point.X, mouseData.Point.Y, 0));
+                    break;
+
+                case MouseMessages.XButtonUp:
+                    mouseButton = (MouseXButtons)mouseData.MouseData == MouseXButtons.X1 ? MouseButtons.XButton1 : MouseButtons.XButton2;
+                    MouseUp?.Invoke(this, new MouseEventArgs(mouseButton, 0, mouseData.Point.X, mouseData.Point.Y, 0));
+                    break;
             }
+
+            Debug.WriteLine(wParam);
         }
 
         /// <summary>
