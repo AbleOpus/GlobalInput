@@ -176,7 +176,7 @@ namespace GlobalInput.Keyboard
         public bool IsHotKeyHooked(Keys hotkey)
         {
             Keys keyCode = hotkey & Keys.KeyCode;
-            Modifiers mods = hotkey.ExtractModifiers();
+            Modifiers mods = KeysToModifiers(hotkey);
 
             bool successful = NativeMethods.RegisterHotKey
                 (bindingWindow.Handle, hotkey.GetHashCode(), (uint)mods, (uint)keyCode);
@@ -184,6 +184,25 @@ namespace GlobalInput.Keyboard
             if (!successful) return true;
             NativeMethods.UnregisterHotKey(bindingWindow.Handle, hotkey.GetHashCode());
             return false;
+        }
+
+        /// <summary>
+        /// Extracts <see cref="Modifiers"/> from the specified <see cref="Keys"/>.
+        /// </summary>
+        private static Modifiers KeysToModifiers(Keys keys)
+        {
+            var modifiers = Modifiers.None;
+
+            if (keys.HasFlag(Keys.Alt))
+                modifiers |= Modifiers.Alt;
+
+            if (keys.HasFlag(Keys.Control))
+                modifiers |= Modifiers.Control;
+
+            if (keys.HasFlag(Keys.Shift))
+                modifiers |= Modifiers.Shift;
+
+            return modifiers;
         }
 
         /// <summary>
@@ -218,7 +237,7 @@ namespace GlobalInput.Keyboard
             }
 
             Keys keyCode = hotkeyBinding.Hotkey & Keys.KeyCode;
-            Modifiers mods = hotkeyBinding.Hotkey.ExtractModifiers();
+            Modifiers mods = KeysToModifiers(hotkeyBinding.Hotkey);
 
             bool successful = NativeMethods.RegisterHotKey
                 (bindingWindow.Handle, hotkeyBinding.Hotkey.GetHashCode(), (uint)mods, (uint)keyCode);

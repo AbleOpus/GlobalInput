@@ -8,6 +8,7 @@ namespace GlobalInput.Keyboard
     /// </summary>
     public static class ExtensionMethods
     {
+
         /// <summary>
         /// Gets whether the key represents a letter in the alphabet.
         /// </summary>
@@ -46,25 +47,6 @@ namespace GlobalInput.Keyboard
         public static bool IsFKey(this Keys keys)
         {
             return keys >= Keys.F1 && keys <= Keys.F24;
-        }
-
-        /// <summary>
-        /// Extracts <see cref="Modifiers"/> from the specified <see cref="Keys"/>.
-        /// </summary>
-        internal static Modifiers ExtractModifiers(this Keys keys)
-        {
-            var modifiers = Modifiers.None;
-
-            if (keys.HasFlag(Keys.Alt))
-                modifiers |= Modifiers.Alt;
-
-            if (keys.HasFlag(Keys.Control))
-                modifiers |= Modifiers.Control;
-
-            if (keys.HasFlag(Keys.Shift))
-                modifiers |= Modifiers.Shift;
-
-            return modifiers;
         }
 
         /// <summary>
