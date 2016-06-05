@@ -9,6 +9,46 @@ namespace GlobalInput.Keyboard
     public static class ExtensionMethods
     {
         /// <summary>
+        /// Gets whether the key represents a letter in the alphabet.
+        /// </summary>
+        public static bool IsLetter(this Keys keys)
+        {
+            return keys >= Keys.A && keys <= Keys.Z;
+        }
+
+        /// <summary>
+        /// Gets whether the key represents a number (including number pad keys).
+        /// </summary>
+        public static bool IsNumber(this Keys keys)
+        {
+            return (keys >= Keys.D0 && keys <= Keys.D9) || (keys >= Keys.NumPad0 && keys <= Keys.NumPad9);
+        }
+
+        /// <summary>
+        /// Gets whether the key is toggleable (Scroll Lock, Caps Lock, or Num Lock).
+        /// </summary>
+        public static bool IsToggle(this Keys keys)
+        {
+            return keys == Keys.CapsLock || keys == Keys.Scroll || keys == Keys.NumLock;
+        }
+
+        /// <summary>
+        /// Gets whether the key is an arrow key.
+        /// </summary>
+        public static bool IsArrow(this Keys keys)
+        {
+            return keys == Keys.Up || keys == Keys.Down || keys == Keys.Left || keys == Keys.Right;
+        }
+
+        /// <summary>
+        /// Gets whether the key is a function key.
+        /// </summary>
+        public static bool IsFKey(this Keys keys)
+        {
+            return keys >= Keys.F1 && keys <= Keys.F24;
+        }
+
+        /// <summary>
         /// Extracts <see cref="Modifiers"/> from the specified <see cref="Keys"/>.
         /// </summary>
         internal static Modifiers ExtractModifiers(this Keys keys)
