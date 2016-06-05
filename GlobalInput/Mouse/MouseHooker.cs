@@ -115,8 +115,6 @@ namespace GlobalInput.Mouse
                     MouseUp?.Invoke(this, new MouseEventArgs(mouseButton, 0, mouseData.Point.X, mouseData.Point.Y, 0));
                     break;
             }
-
-            Debug.WriteLine(wParam);
         }
 
         /// <summary>
