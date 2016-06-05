@@ -17,7 +17,7 @@ namespace GlobalInput.Mouse
         [Description("An inclusive message type filter, to disable and enable the invocation of" + 
             " certain events, without unsubscribing to them, or unhooking the low-level hooker.")]
         [DefaultValue(MouseMessageTypes.All), Category("Behavior")]
-        public MouseMessageTypes MessageFilter { get; set; }
+        public MouseMessageTypes MessageFilter { get; set; } = MouseMessageTypes.All;
 
         #region Events
         /// <summary>
@@ -44,14 +44,6 @@ namespace GlobalInput.Mouse
         [Description("Occurs when a mouse button has been depressed."), Category("Mouse")]
         public event MouseEventHandler MouseDown;
         #endregion
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MouseHooker"/> class.
-        /// </summary>
-        public MouseHooker()
-        {
-            MessageFilter = MouseMessageTypes.All;
-        }
 
         /// <summary>
         /// Implements logic to process data passed through the hook call-back.
