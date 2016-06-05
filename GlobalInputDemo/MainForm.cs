@@ -106,12 +106,12 @@ namespace GlobalInputDemo
 
         private void keyboardHooker_KeyDown(object sender, KeyEventArgs e)
         {
-            listBoxKeyboardHook.Items.Insert(0, "Key down: " + e.KeyData.KeyDataToString());
+            listBoxKeyboardHook.Items.Insert(0, "Key down: ".PadRight(15) + "\t" + e.KeyData.KeyDataToString());
         }
 
         private void keyboardHooker_KeyUp(object sender, KeyEventArgs e)
         {
-            listBoxKeyboardHook.Items.Insert(0, "Key up: " + e.KeyData.KeyDataToString());
+            listBoxKeyboardHook.Items.Insert(0, "Key up: ".PadRight(15) + "\t" + e.KeyData.KeyDataToString());
         }
 
         private void mouseHooker_MouseDown(object sender, MouseEventArgs e)
