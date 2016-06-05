@@ -22,6 +22,7 @@ namespace GlobalInput.Keyboard.KeyNaming
             if (keyData.HasFlag(Keys.Alt)) wordList.Add("Alt");
             if (keyData.HasFlag(Keys.Shift)) wordList.Add("Shift");
             if (keyData.HasFlag(Keys.Control)) wordList.Add("Control");
+            if (keyData.HasFlag((Keys)524288)) wordList.Add("Windows");
             Keys keyCode = keyData & Keys.KeyCode;
 
             // Process numbers

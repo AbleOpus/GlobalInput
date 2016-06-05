@@ -19,7 +19,6 @@ namespace GlobalInputDemo
         public MainForm()
         {
             InitializeComponent();
-
             // Setup keyboard hooks
             hotkeyTextBox.AllowSoloModifiers = true;
             listBoxBindings.DataSource = hotKeyHooker.HotkeyBindings;
@@ -59,13 +58,17 @@ namespace GlobalInputDemo
 
             try
             {
-                var key = hotkeyTextBox.Hotkey;
-                hotKeyHooker.Hook(key, () => listBoxHKLog.Items.Insert(0, $@"""{KeyNaming.KeyDataToString(key)}"" detected."));
+                HookHotkey(hotkeyTextBox.Hotkey);
             }
             catch (HotkeyAlreadyBoundException ex)
             {
                 ShowError(ex.Message);
             }
+        }
+
+        private void HookHotkey(Keys key)
+        {
+            hotKeyHooker.Hook(key, () => listBoxHKLog.Items.Insert(0, $@"""{key.KeyDataToString()}"" detected."));
         }
 
         private static void ShowError(string message)

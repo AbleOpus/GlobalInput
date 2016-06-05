@@ -51,26 +51,6 @@ namespace GlobalInput.Keyboard
                 return keyCode;
             }
 
-            /// <summary>
-            /// Converts <see cref="Modifiers"/> to <see cref="Keys"/>.
-            /// </summary>
-            /// <param name="modifiers">The <see cref="Modifiers"/> to convert.</param>
-            private static Keys ModifiersToKeys(Modifiers modifiers)
-            {
-                var keys = Keys.None;
-
-                if (modifiers.HasFlag(Modifiers.Alt))
-                    keys |= Keys.Alt;
-
-                if (modifiers.HasFlag(Modifiers.Control))
-                    keys |= Keys.Control;
-
-                if (modifiers.HasFlag(Modifiers.Shift))
-                    keys |= Keys.Shift;
-
-                return keys;
-            }
-
             public void Dispose()
             {
                 DestroyHandle();
@@ -222,7 +202,33 @@ namespace GlobalInput.Keyboard
             if (keys.HasFlag(Keys.Shift))
                 modifiers |= Modifiers.Shift;
 
+            if (keys.HasFlag((Keys)524288))
+                modifiers |= Modifiers.Win;
+
             return modifiers;
+        }
+
+        /// <summary>
+        /// Converts <see cref="Modifiers"/> to <see cref="Keys"/>.
+        /// </summary>
+        /// <param name="modifiers">The <see cref="Modifiers"/> to convert.</param>
+        private static Keys ModifiersToKeys(Modifiers modifiers)
+        {
+            var keys = Keys.None;
+
+            if (modifiers.HasFlag(Modifiers.Alt))
+                keys |= Keys.Alt;
+
+            if (modifiers.HasFlag(Modifiers.Control))
+                keys |= Keys.Control;
+
+            if (modifiers.HasFlag(Modifiers.Shift))
+                keys |= Keys.Shift;
+
+            if (modifiers.HasFlag(Modifiers.Win))
+                keys |= (Keys)524288;
+
+            return keys;
         }
 
         /// <summary>
