@@ -15,7 +15,7 @@ namespace GlobalInput.Keyboard.KeyNaming
         /// <summary>
         /// Converts the specified <see cref="Keys"/> to a shortcut string.
         /// </summary>
-        public static string KeyDataToString(Keys keyData)
+        public static string KeyDataToString(this Keys keyData)
         {
             if (keyData == Keys.None) return "None";
             var wordList = new List<string>();
