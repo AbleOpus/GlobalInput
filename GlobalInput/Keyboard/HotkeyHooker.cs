@@ -231,7 +231,7 @@ namespace GlobalInput.Keyboard
             if (keys.HasFlag(Keys.Shift))
                 modifiers |= Modifiers.Shift;
 
-            if (keys.HasFlag((Keys)524288))
+            if (keys.HasFlag(ExtraKeys.WinKeyModifier))
                 modifiers |= Modifiers.Win;
 
             return modifiers;
@@ -255,7 +255,7 @@ namespace GlobalInput.Keyboard
                 keys |= Keys.Shift;
 
             if (modifiers.HasFlag(Modifiers.Win))
-                keys |= (Keys)524288;
+                keys |= ExtraKeys.WinKeyModifier;
 
             return keys;
         }

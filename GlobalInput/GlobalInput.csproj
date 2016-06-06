@@ -39,6 +39,7 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Keyboard\ExtraKeys.cs" />
     <Compile Include="Keyboard\KeyboardHooker.cs">
       <SubType>Component</SubType>
     </Compile>

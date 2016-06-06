@@ -8,7 +8,6 @@ namespace GlobalInput.Keyboard
     /// </summary>
     public static class ExtensionMethods
     {
-
         /// <summary>
         /// Gets whether the key represents a letter in the alphabet.
         /// </summary>
