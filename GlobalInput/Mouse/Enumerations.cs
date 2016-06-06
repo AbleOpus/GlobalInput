@@ -3,16 +3,6 @@
 namespace GlobalInput.Mouse
 {
     /// <summary>
-    /// Represents the tertiary mouse buttons. Typically these are the two tabs
-    /// placed on the left of the mouse.
-    /// </summary>
-    internal enum MouseXButtons : uint
-    {
-        X1 = 65536,
-        X2 = 131072
-    }
-
-    /// <summary>
     /// Specifies messages, which indicate what mouse operation was performed.
     /// </summary>
     public enum MouseMessages

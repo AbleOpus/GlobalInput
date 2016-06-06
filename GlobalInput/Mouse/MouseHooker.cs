@@ -12,6 +12,16 @@ namespace GlobalInput.Mouse
     public sealed class MouseHooker : LowLevelHooker
     {
         /// <summary>
+        /// Represents the tertiary mouse buttons. Typically these are the two tabs
+        /// placed on the left of the mouse.
+        /// </summary>
+        private enum MouseXButtons : uint
+        {
+            X1 = 65536,
+            X2 = 131072
+        }
+
+        /// <summary>
         /// Gets or sets an inclusive message type filter, to disable and enable the invocation
         ///  of certain events, without unsubscribing to them, or unhooking the low-level hooker.
         /// </summary>
