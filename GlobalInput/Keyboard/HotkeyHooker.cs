@@ -7,7 +7,6 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using GlobalInput.Annotations;
 using GlobalInput.Keyboard.KeyNaming;
 
 namespace GlobalInput.Keyboard

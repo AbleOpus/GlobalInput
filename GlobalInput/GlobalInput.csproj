@@ -65,7 +65,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Mouse\NativeStructs.cs" />
-    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

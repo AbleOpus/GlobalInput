@@ -1,14 +1,7 @@
 ﻿using System;
+using System.ComponentModel;
 
-#pragma warning disable 1591
-// ReSharper disable UnusedMember.Global
-// ReSharper disable MemberCanBePrivate.Global
-// ReSharper disable UnusedAutoPropertyAccessor.Global
-// ReSharper disable IntroduceOptionalParameters.Global
-// ReSharper disable MemberCanBeProtected.Global
-// ReSharper disable InconsistentNaming
-
-namespace GlobalInput.Annotations
+namespace GlobalInput
 {
   /// <summary>
   /// Indicates that the method is contained in a type that implements
@@ -48,8 +41,8 @@ namespace GlobalInput.Annotations
   /// <item><c>SetProperty(ref myField, value, "Property")</c></item>
   /// </list>
   /// </example>
-  [AttributeUsage(AttributeTargets.Method)]
-  public sealed class NotifyPropertyChangedInvocatorAttribute : Attribute
+  [AttributeUsage(AttributeTargets.Method), EditorBrowsable(EditorBrowsableState.Never)]
+  internal sealed class NotifyPropertyChangedInvocatorAttribute : Attribute
   {
     public NotifyPropertyChangedInvocatorAttribute() { }
     public NotifyPropertyChangedInvocatorAttribute(string parameterName)
@@ -59,5 +52,4 @@ namespace GlobalInput.Annotations
 
     public string ParameterName { get; private set; }
   }
-
 }
