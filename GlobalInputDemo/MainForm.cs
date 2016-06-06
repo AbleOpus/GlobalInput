@@ -28,6 +28,8 @@ namespace GlobalInputDemo
             BindCheckBoxValue(checkBoxMouseHookerEnabled, mouseHooker, nameof(mouseHooker.Hooked));
             BindCheckBoxValue(checkBoxKeyCallNext, keyboardHooker, nameof(keyboardHooker.CallNextHook));
             BindCheckBoxValue(checkBoxMouseCallNext, mouseHooker, nameof(mouseHooker.CallNextHook));
+
+            hotKeyHooker.Unhook(Keys.Control | Keys.H);
         }
 
         /// <summary>

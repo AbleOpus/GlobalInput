@@ -55,8 +55,7 @@
     <Compile Include="Forms\HotkeyTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Keyboard\HotkeyAlreadyBoundException.cs" />
-    <Compile Include="Keyboard\HotkeyNotBoundException.cs" />
+    <Compile Include="Keyboard\Exceptions.cs" />
     <Compile Include="Keyboard\HotkeyHooker.cs" />
     <Compile Include="Keyboard\HotkeyBinding.cs" />
     <Compile Include="Keyboard\KeyboardHookStruct.cs" />

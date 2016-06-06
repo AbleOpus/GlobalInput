@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GlobalInput.Annotations;
+using GlobalInput.Keyboard.KeyNaming;
 
 namespace GlobalInput.Keyboard
 {
@@ -234,7 +236,6 @@ namespace GlobalInput.Keyboard
         /// <summary>
         /// Hooks a system-wide hotkey.
         /// </summary>
-        /// <exception cref="HotkeyAlreadyBoundException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="InvalidKeysValueException"></exception>
         public void Hook(Keys hotKey, Action action = null)
@@ -245,7 +246,6 @@ namespace GlobalInput.Keyboard
         /// <summary>
         /// Hooks a system-wide hotkey.
         /// </summary>
-        /// <exception cref="HotkeyAlreadyBoundException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="InvalidKeysValueException"></exception>
         public void Hook(HotkeyBinding hotkeyBinding)
@@ -307,7 +307,19 @@ namespace GlobalInput.Keyboard
                 (bindingWindow.Handle, keys.GetHashCode());
 
             if (!successful)
-                throw new HotkeyNotBoundException(Marshal.GetLastWin32Error());
+            {
+                int errorCode = Marshal.GetLastWin32Error();
+                Debug.WriteLine(errorCode);
+
+                switch (errorCode)
+                {
+                    case 1419:
+                        throw new HotkeyNotBoundException(
+                            $@"Cannot unhook ""{keys.KeyDataToString()}"" as is not hooked by this hooker.", keys);
+
+                    default: throw new NotImplementedException();
+                }
+            }
         }
 
         /// <summary>
