@@ -59,7 +59,6 @@
     <Compile Include="Keyboard\HotkeyHooker.cs" />
     <Compile Include="Keyboard\HotkeyBinding.cs" />
     <Compile Include="Keyboard\KeyboardHookStruct.cs" />
-    <Compile Include="Keyboard\Enumerations.cs" />
     <Compile Include="NativeMethods.cs" />
     <Compile Include="Mouse\Enumerations.cs" />
     <Compile Include="Mouse\MouseHooker.cs">
