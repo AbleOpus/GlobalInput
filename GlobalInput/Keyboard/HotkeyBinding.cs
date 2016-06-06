@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using GlobalInput.Keyboard.KeyNaming;
 
 namespace GlobalInput.Keyboard
 {
@@ -55,7 +56,7 @@ namespace GlobalInput.Keyboard
         public override string ToString()
         {
             string methodName = Action?.Method.Name ?? "N/A";
-            return $"Hotkey: {KeyNaming.KeyNaming.KeyDataToString(Hotkey) }, Action: {methodName}";
+            return $"Hotkey: {Hotkey.KeyDataToString() }, Action: {methodName}";
         }
 
         /// <summary>
@@ -75,7 +76,7 @@ namespace GlobalInput.Keyboard
                 return ToString();
 
             string methodName = Action?.Method.Name ?? "N/A";
-            return String.Format(formatProvider, format, KeyNaming.KeyNaming.KeyDataToString(Hotkey), methodName);
+            return String.Format(formatProvider, format, Hotkey.KeyDataToString(), methodName);
         }
 
         /// <summary>
