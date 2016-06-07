@@ -64,9 +64,9 @@ namespace GlobalInputDemo
             this.listBoxKeyboardHook = new System.Windows.Forms.ListBox();
             this.buttonFindOccupied = new System.Windows.Forms.Button();
             this.listBoxOccupied = new System.Windows.Forms.ListBox();
+            this.menuItemKeysVisualizer = new System.Windows.Forms.ToolStripMenuItem();
             this.keyboardHooker = new GlobalInput.Keyboard.KeyboardHooker();
             this.mouseHooker = new GlobalInput.Mouse.MouseHooker();
-            this.menuItemKeysVisualizer = new System.Windows.Forms.ToolStripMenuItem();
             groupBox1 = new System.Windows.Forms.GroupBox();
             tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             label3 = new System.Windows.Forms.Label();
@@ -417,18 +417,6 @@ namespace GlobalInputDemo
             this.listBoxOccupied.Size = new System.Drawing.Size(221, 429);
             this.listBoxOccupied.TabIndex = 0;
             // 
-            // keyboardHooker
-            // 
-            this.keyboardHooker.KeyDown += new System.EventHandler<System.Windows.Forms.KeyEventArgs>(this.keyboardHooker_KeyDown);
-            this.keyboardHooker.KeyUp += new System.EventHandler<System.Windows.Forms.KeyEventArgs>(this.keyboardHooker_KeyUp);
-            // 
-            // mouseHooker
-            // 
-            this.mouseHooker.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.mouseHooker_MouseWheel);
-            this.mouseHooker.MouseMoved += new System.Windows.Forms.MouseEventHandler(this.mouseHooker_MouseMoved);
-            this.mouseHooker.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouseHooker_MouseUp);
-            this.mouseHooker.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouseHooker_MouseDown);
-            // 
             // menuStrip
             // 
             menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -445,6 +433,18 @@ namespace GlobalInputDemo
             this.menuItemKeysVisualizer.Size = new System.Drawing.Size(125, 20);
             this.menuItemKeysVisualizer.Text = "Visualize Keys Enum";
             this.menuItemKeysVisualizer.Click += new System.EventHandler(this.menuItemKeysVisualizer_Click);
+            // 
+            // keyboardHooker
+            // 
+            this.keyboardHooker.KeyDown += new System.EventHandler<System.Windows.Forms.KeyEventArgs>(this.keyboardHooker_KeyDown);
+            this.keyboardHooker.KeyUp += new System.EventHandler<System.Windows.Forms.KeyEventArgs>(this.keyboardHooker_KeyUp);
+            // 
+            // mouseHooker
+            // 
+            this.mouseHooker.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.mouseHooker_MouseWheel);
+            this.mouseHooker.MouseMoved += new System.Windows.Forms.MouseEventHandler(this.mouseHooker_MouseMoved);
+            this.mouseHooker.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouseHooker_MouseUp);
+            this.mouseHooker.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouseHooker_MouseDown);
             // 
             // MainForm
             // 

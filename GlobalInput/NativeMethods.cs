@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
 
 namespace GlobalInput
 {
@@ -21,8 +20,7 @@ namespace GlobalInput
         /// <param name="dwThreadId">The identifier of the thread with which the hook procedure is to be associated.</param>
         /// <returns>If function succeeds, returns the handle to the hook procedure, otherwise <c>IntPtr.Zero</c>.</returns>
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        internal static extern IntPtr SetWindowsHookEx(int idHook,
-        LowLevelHookProc lpfn, IntPtr hMod, uint dwThreadId);
+        internal static extern IntPtr SetWindowsHookEx(int idHook, LowLevelHookProc lpfn, IntPtr hMod, uint dwThreadId);
 
         /// <summary>
         /// Removes a hook procedure installed in a hook chain by the SetWindowsHookEx function.
@@ -49,8 +47,7 @@ namespace GlobalInput
         /// The current hook procedure must also return this value. The meaning of the
         ///  return value depends on the hook type.</returns>
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        internal static extern IntPtr CallNextHookEx(IntPtr hhk, int nCode,
-        IntPtr wParam, IntPtr lParam);
+        internal static extern IntPtr CallNextHookEx(IntPtr hhk, int nCode, IntPtr wParam, IntPtr lParam);
 
         /// <summary>
         /// Retrieves a module handle for the specified module.
@@ -62,13 +59,10 @@ namespace GlobalInput
         internal static extern IntPtr GetModuleHandle(string lpModuleName);
 
         /// <summary>
-        /// Registers a system-wide hot key.
+        /// Registers a system-wide hotkey.
         /// </summary>
         [DllImport("user32.dll", SetLastError = true)]
         internal static extern bool RegisterHotKey(IntPtr windowHandle, int hotkeyId, uint modifier, uint key);
-
-        [DllImport("kernel32.dll")]
-        internal static extern uint GetCurrentThreadId();
 
         /// <summary>
         /// Frees a hot key previously registered by the calling thread.
@@ -83,18 +77,5 @@ namespace GlobalInput
         /// <returns>If the function succeeds, the return value is nonzero.</returns>
         [DllImport("user32.dll")]
         internal static extern bool HideCaret(IntPtr windowHandle);
-
-        /// <summary>
-        /// Retrieves the status of the specified virtual key. 
-        /// The status specifies whether the key is up, down, or toggled 
-        /// (on, off—alternating each time the key is pressed).
-        /// </summary>
-        /// <param name="keys">The virtual key to get the state of.</param>
-        /// <returns>
-        /// If the high-order bit is 1, the key is down; otherwise, it is up.
-        /// If the low-order bit is 1, the key is toggled.
-        /// </returns>
-        [DllImport("user32.dll", SetLastError = true)]
-        internal static extern short GetKeyState(Keys keys);
     }
 }
