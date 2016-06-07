@@ -43,17 +43,19 @@ namespace GlobalInput.Forms
             get { return hotkey; }
             set
             {
-                if (!AllowSoloModifiers && hotkey.IsOnlyModifiers())
+                if (!AllowSoloModifiers && value.IsOnlyModifiers())
                 {
-                    value = Keys.None;
+                    hotkey = Keys.None;
+                }
+                else if (!AllowToggleKeys && value.HasToggleKey())
+                {
+                    hotkey = value.GetModifiers();
+                }
+                else
+                {
+                    hotkey = value;
                 }
 
-                if (!AllowToggleKeys && value.HasToggleKey())
-                {
-                    value = value.GetModifiers();
-                }
-
-                hotkey = value;
                 Text = Hotkey.KeyDataToString();
             }
         }
@@ -95,6 +97,7 @@ namespace GlobalInput.Forms
         private bool allowSoloModifiers;
         /// <summary>
         /// Gets or sets whether to allow submission of only modifiers.
+        /// If true, only key data having a key-code can be set as a hotkey.
         /// </summary>
         [Category("Behavior"), DefaultValue(false)]
         [Description("Whether to allow input of just modifiers.")]

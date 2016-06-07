@@ -73,13 +73,13 @@ namespace GlobalInput.Keyboard
             Keys keyCode = keyData.GetKeyCode();
 
             bool hasModifiers = keyData.GetModifiers() != Keys.None;
-            bool hasNonMod =
+            bool hasKeyCode =
                 keyCode != Keys.None &&
                 keyCode != Keys.Menu &&
                 keyCode != Keys.ShiftKey &&
                 keyCode != Keys.ControlKey;
 
-            return !hasNonMod && hasModifiers;
+            return !hasKeyCode && hasModifiers;
         }
 
         /// <summary>

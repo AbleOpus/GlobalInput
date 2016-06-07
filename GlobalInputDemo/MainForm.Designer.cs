@@ -250,6 +250,7 @@ namespace GlobalInputDemo
             // hotkeyTextBox
             // 
             this.hotkeyTextBox.AllowSoloModifiers = true;
+            this.hotkeyTextBox.AllowToggleKeys = true;
             this.hotkeyTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.hotkeyTextBox.BackColor = System.Drawing.SystemColors.Control;
