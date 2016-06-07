@@ -48,6 +48,17 @@ namespace GlobalInputDemo
             return $"Button {args.Button} {mode} at {args.X} x {args.Y}";
         }
 
+        private void HookHotkey(Keys key)
+        {
+            hotKeyHooker.Hook(key, () => listBoxHKLog.Items.Insert(0, $@"""{key.KeyDataToString()}"" detected."));
+        }
+
+        private static void ShowError(string message)
+        {
+            MessageBox.Show(message, Application.ProductName,
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         private void buttonBind_Click(object sender, EventArgs e)
         {
             if (hotkeyTextBox.Hotkey == Keys.None)
@@ -79,17 +90,6 @@ namespace GlobalInputDemo
             }
         }
 
-        private void HookHotkey(Keys key)
-        {
-            hotKeyHooker.Hook(key, () => listBoxHKLog.Items.Insert(0, $@"""{key.KeyDataToString()}"" detected."));
-        }
-
-        private static void ShowError(string message)
-        {
-            MessageBox.Show(message, Application.ProductName,
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
         private void buttonUnbindAll_Click(object sender, EventArgs e)
         {
             hotKeyHooker.UnhookAll();
@@ -107,9 +107,31 @@ namespace GlobalInputDemo
             }
         }
 
+        private async void buttonFindOccupied_Click(object sender, EventArgs e)
+        {
+            buttonFindOccupied.Enabled = false;
+            var occupied = await HotkeyHooker.GetOccupiedHotkeysTaskAsync();
+            listBoxOccupied.Items.Clear();
+
+            foreach (var keys in occupied)
+            {
+                listBoxOccupied.Items.Add(keys.KeyDataToString());
+            }
+
+            buttonFindOccupied.Enabled = true;
+        }
+
         private void menuItemClear_Click(object sender, EventArgs e)
         {
             listBoxToClear?.Items.Clear();
+        }
+
+        private void menuItemKeysVisualizer_Click(object sender, EventArgs e)
+        {
+            using (var dialog = new KeysEnumVisualizerDialog())
+            {
+                dialog.ShowDialog();
+            }
         }
 
         private void listBox_MouseEnter(object sender, EventArgs e)
@@ -145,28 +167,6 @@ namespace GlobalInputDemo
         private void mouseHooker_MouseWheel(object sender, MouseEventArgs e)
         {
             listBoxMousing.Items.Insert(0, "Wheeled " + e.Delta + " notches");
-        }
-
-        private async void buttonFindOccupied_Click(object sender, EventArgs e)
-        {
-            buttonFindOccupied.Enabled = false;
-            var occupied = await HotkeyHooker.GetOccupiedHotkeysTaskAsync();
-            listBoxOccupied.Items.Clear();
-
-            foreach (var keys in occupied)
-            {
-                listBoxOccupied.Items.Add(keys.KeyDataToString());
-            }
-
-            buttonFindOccupied.Enabled = true;
-        }
-
-        private void menuItemKeysVisualizer_Click(object sender, EventArgs e)
-        {
-            using (var dialog = new KeysEnumVisualizerDialog())
-            {
-                dialog.ShowDialog();
-            }
         }
     }
 }
