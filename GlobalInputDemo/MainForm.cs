@@ -19,7 +19,6 @@ namespace GlobalInputDemo
         public MainForm()
         {
             InitializeComponent();
-            hotKeyHooker.Dispose();
             // Setup keyboard hooks
             hotkeyTextBox.AllowSoloModifiers = true;
             listBoxBindings.DataSource = hotKeyHooker.HotkeyBindings;

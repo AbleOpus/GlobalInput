@@ -83,8 +83,34 @@ namespace GlobalInput.Keyboard
             public void Dispose()
             {
                 DestroyHandle();
-                ReleaseHandle();
             }
+        }
+
+        #region Static Members
+        /// <summary>
+        /// Indicates whether a <see cref="Keys"/> has been bound already 
+        /// by this application or another application.
+        /// </summary>
+        /// <param name="hotkey">The key to test.</param>
+        /// <exception cref="InvalidKeysValueException"></exception>
+        public static bool IsHotKeyHooked(Keys hotkey)
+        {
+            HotkeyHooker hooker = new HotkeyHooker();
+
+            try
+            {
+                hooker.Hook(hotkey);
+            }
+            catch (HotkeyAlreadyBoundException)
+            {
+                return true;
+            }
+            finally
+            {
+                hooker.Dispose();
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -149,6 +175,7 @@ namespace GlobalInput.Keyboard
             hooker.Dispose();
             return boundKeys.ToArray();
         }
+        #endregion
 
         private readonly HotkeyBindingWindow bindingWindow = new HotkeyBindingWindow();
         private readonly BindingList<HotkeyBinding> hotkeyBindings = new BindingList<HotkeyBinding>();
@@ -187,7 +214,7 @@ namespace GlobalInput.Keyboard
         {
             bindingWindow.HotkeyPressed = (s, e) =>
             {
-                if (InvokeEnabled)
+                if (!IsDisposed && InvokeEnabled)
                 {
                     foreach (var hk in HotkeyBindings)
                     {
@@ -199,32 +226,6 @@ namespace GlobalInput.Keyboard
                     }
                 }
             };
-        }
-
-        /// <summary>
-        /// Indicates whether a <see cref="Keys"/> has been bound already 
-        /// by this application or another application.
-        /// </summary>
-        /// <param name="hotkey">The key to test.</param>
-        /// <exception cref="InvalidKeysValueException"></exception>
-        public static bool IsHotKeyHooked(Keys hotkey)
-        {
-            HotkeyHooker hooker = new HotkeyHooker();
-
-            try
-            {
-                hooker.Hook(hotkey);
-            }
-            catch (HotkeyAlreadyBoundException)
-            {
-                return true;
-            }
-            finally
-            {
-                hooker.Dispose();
-            }
-
-            return false;
         }
 
         /// <summary>
@@ -289,6 +290,8 @@ namespace GlobalInput.Keyboard
         /// <exception cref="InvalidKeysValueException"></exception>
         public void Hook(HotkeyBinding hotkeyBinding)
         {
+            CheckDisposed();
+
             if (hotkeyBinding == null)
                 throw new ArgumentNullException(nameof(hotkeyBinding));
 
@@ -331,6 +334,7 @@ namespace GlobalInput.Keyboard
         /// <exception cref="HotkeyNotBoundException">Tried to unhook a hotkey which was not hooked.</exception>
         public void Unhook(Keys keys)
         {
+            CheckDisposed();
             UnhookCore(keys);
             hotkeyBindings.Remove(new HotkeyBinding(keys));
         }
@@ -362,11 +366,22 @@ namespace GlobalInput.Keyboard
         }
 
         /// <summary>
+        /// Checks to see if this instance has been disposed.
+        /// </summary>
+        private void CheckDisposed()
+        {
+            if (IsDisposed)
+                throw new ObjectDisposedException(nameof(HotkeyHooker), "Cannot use object after it has been disposed.");
+        }
+
+        /// <summary>
         /// Unhooks all hooked system-wide hotkeys.
         /// </summary>
         /// <exception cref="HotkeyNotBoundException"></exception>
         public void UnhookAll()
         {
+            CheckDisposed();
+
             foreach (var hook in HotkeyBindings)
             {
                 UnhookCore(hook.Hotkey);
