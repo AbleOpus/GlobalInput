@@ -19,6 +19,7 @@ namespace GlobalInputDemo
         public MainForm()
         {
             InitializeComponent();
+            hotKeyHooker.Dispose();
             // Setup keyboard hooks
             hotkeyTextBox.AllowSoloModifiers = true;
             listBoxBindings.DataSource = hotKeyHooker.HotkeyBindings;
@@ -63,6 +64,19 @@ namespace GlobalInputDemo
             catch (HotkeyAlreadyBoundException ex)
             {
                 ShowError(ex.Message);
+            }
+        }
+
+        private void buttonCheckIfHooked_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var message = HotkeyHooker.IsHotKeyHooked(hotkeyTextBox.Hotkey) ? "Already hooked." : "Not hooked.";
+                MessageBox.Show(message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (InvalidKeysValueException)
+            {
+                ShowError("Invalid keys specified.");
             }
         }
 

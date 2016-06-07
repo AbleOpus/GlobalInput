@@ -83,6 +83,7 @@ namespace GlobalInput.Keyboard
             public void Dispose()
             {
                 DestroyHandle();
+                ReleaseHandle();
             }
         }
 
@@ -157,6 +158,11 @@ namespace GlobalInput.Keyboard
         /// </summary>
         public IReadOnlyList<HotkeyBinding> HotkeyBindings => hotkeyBindings;
 
+        /// <summary>
+        /// Gets whether this instance has been disposed.
+        /// </summary>
+        public bool IsDisposed { get; private set; }
+
         private bool invokeEnabled = true;
         /// <summary>
         /// Gets or sets whether <see cref="Action"/>'s corresponding to a pressed hotkey, will be invoked.
@@ -199,21 +205,25 @@ namespace GlobalInput.Keyboard
         /// Indicates whether a <see cref="Keys"/> has been bound already 
         /// by this application or another application.
         /// </summary>
-        /// <param name="hotkey">The <see cref="Keys"/> to evaluate.</param>
-        /// <returns>
-        /// <c>true</c> if the <see cref="Keys"/> have not been previously bound 
-        /// and is available to be bound; otherwise, <c>false</c>.
-        /// </returns>
-        public bool IsHotKeyHooked(Keys hotkey)
+        /// <param name="hotkey">The key to test.</param>
+        /// <exception cref="InvalidKeysValueException"></exception>
+        public static bool IsHotKeyHooked(Keys hotkey)
         {
-            Keys keyCode = hotkey & Keys.KeyCode;
-            Modifiers mods = KeysToModifiers(hotkey);
+            HotkeyHooker hooker = new HotkeyHooker();
 
-            bool successful = NativeMethods.RegisterHotKey
-                (bindingWindow.Handle, hotkey.GetHashCode(), (uint)mods, (uint)keyCode);
+            try
+            {
+                hooker.Hook(hotkey);
+            }
+            catch (HotkeyAlreadyBoundException)
+            {
+                return true;
+            }
+            finally
+            {
+                hooker.Dispose();
+            }
 
-            if (!successful) return true;
-            NativeMethods.UnregisterHotKey(bindingWindow.Handle, hotkey.GetHashCode());
             return false;
         }
 
@@ -373,6 +383,7 @@ namespace GlobalInput.Keyboard
         {
             UnhookAll();
             bindingWindow.Dispose();
+            IsDisposed = true;
         }
 
         /// <summary>

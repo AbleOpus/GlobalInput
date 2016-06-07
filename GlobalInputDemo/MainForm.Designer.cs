@@ -67,6 +67,7 @@ namespace GlobalInputDemo
             this.menuItemKeysVisualizer = new System.Windows.Forms.ToolStripMenuItem();
             this.keyboardHooker = new GlobalInput.Keyboard.KeyboardHooker();
             this.mouseHooker = new GlobalInput.Mouse.MouseHooker();
+            this.buttonCheckIfHooked = new System.Windows.Forms.Button();
             groupBox1 = new System.Windows.Forms.GroupBox();
             tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             label3 = new System.Windows.Forms.Label();
@@ -89,6 +90,7 @@ namespace GlobalInputDemo
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(this.buttonCheckIfHooked);
             groupBox1.Controls.Add(this.checkBoxInvokeEnabled);
             groupBox1.Controls.Add(this.buttonUnbindAll);
             groupBox1.Controls.Add(this.buttonUnbindSelected);
@@ -238,7 +240,7 @@ namespace GlobalInputDemo
             this.hotkeyTextBox.HotkeyModifiers = System.Windows.Forms.Keys.None;
             this.hotkeyTextBox.Location = new System.Drawing.Point(53, 19);
             this.hotkeyTextBox.Name = "hotkeyTextBox";
-            this.hotkeyTextBox.Size = new System.Drawing.Size(284, 20);
+            this.hotkeyTextBox.Size = new System.Drawing.Size(203, 20);
             this.hotkeyTextBox.TabIndex = 0;
             // 
             // label1
@@ -446,6 +448,17 @@ namespace GlobalInputDemo
             this.mouseHooker.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouseHooker_MouseUp);
             this.mouseHooker.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouseHooker_MouseDown);
             // 
+            // buttonCheckIfHooked
+            // 
+            this.buttonCheckIfHooked.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCheckIfHooked.Location = new System.Drawing.Point(262, 17);
+            this.buttonCheckIfHooked.Name = "buttonCheckIfHooked";
+            this.buttonCheckIfHooked.Size = new System.Drawing.Size(75, 23);
+            this.buttonCheckIfHooked.TabIndex = 10;
+            this.buttonCheckIfHooked.Text = "Check";
+            this.buttonCheckIfHooked.UseVisualStyleBackColor = true;
+            this.buttonCheckIfHooked.Click += new System.EventHandler(this.buttonCheckIfHooked_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -499,6 +512,7 @@ namespace GlobalInputDemo
         private System.Windows.Forms.Button buttonFindOccupied;
         private System.Windows.Forms.ListBox listBoxOccupied;
         private System.Windows.Forms.ToolStripMenuItem menuItemKeysVisualizer;
+        private System.Windows.Forms.Button buttonCheckIfHooked;
     }
 }
 
