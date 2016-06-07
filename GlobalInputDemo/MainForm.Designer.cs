@@ -46,6 +46,7 @@ namespace GlobalInputDemo
             System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
             System.Windows.Forms.GroupBox groupBox2;
             System.Windows.Forms.MenuStrip menuStrip;
+            this.buttonCheckIfHooked = new System.Windows.Forms.Button();
             this.checkBoxInvokeEnabled = new System.Windows.Forms.CheckBox();
             this.buttonUnbindAll = new System.Windows.Forms.Button();
             this.buttonUnbindSelected = new System.Windows.Forms.Button();
@@ -67,7 +68,7 @@ namespace GlobalInputDemo
             this.menuItemKeysVisualizer = new System.Windows.Forms.ToolStripMenuItem();
             this.keyboardHooker = new GlobalInput.Keyboard.KeyboardHooker();
             this.mouseHooker = new GlobalInput.Mouse.MouseHooker();
-            this.buttonCheckIfHooked = new System.Windows.Forms.Button();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             groupBox1 = new System.Windows.Forms.GroupBox();
             tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             label3 = new System.Windows.Forms.Label();
@@ -106,6 +107,18 @@ namespace GlobalInputDemo
             groupBox1.TabStop = false;
             groupBox1.Text = "Hokeying";
             // 
+            // buttonCheckIfHooked
+            // 
+            this.buttonCheckIfHooked.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCheckIfHooked.Location = new System.Drawing.Point(262, 17);
+            this.buttonCheckIfHooked.Name = "buttonCheckIfHooked";
+            this.buttonCheckIfHooked.Size = new System.Drawing.Size(75, 23);
+            this.buttonCheckIfHooked.TabIndex = 10;
+            this.buttonCheckIfHooked.Text = "Check";
+            this.toolTip.SetToolTip(this.buttonCheckIfHooked, "Check to see if the hotkey is already installed.");
+            this.buttonCheckIfHooked.UseVisualStyleBackColor = true;
+            this.buttonCheckIfHooked.Click += new System.EventHandler(this.buttonCheckIfHooked_Click);
+            // 
             // checkBoxInvokeEnabled
             // 
             this.checkBoxInvokeEnabled.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -115,6 +128,7 @@ namespace GlobalInputDemo
             this.checkBoxInvokeEnabled.Size = new System.Drawing.Size(101, 17);
             this.checkBoxInvokeEnabled.TabIndex = 9;
             this.checkBoxInvokeEnabled.Text = "Invoke Enabled";
+            this.toolTip.SetToolTip(this.checkBoxInvokeEnabled, "Whether to allow the installed hotkeys to invoke the actions they are bound to.");
             this.checkBoxInvokeEnabled.UseVisualStyleBackColor = true;
             // 
             // buttonUnbindAll
@@ -136,6 +150,7 @@ namespace GlobalInputDemo
             this.buttonUnbindSelected.Size = new System.Drawing.Size(137, 23);
             this.buttonUnbindSelected.TabIndex = 7;
             this.buttonUnbindSelected.Text = "Unbind Selected";
+            this.toolTip.SetToolTip(this.buttonUnbindSelected, "Unbind the hotkey selected in the bindings list-box.");
             this.buttonUnbindSelected.UseVisualStyleBackColor = true;
             this.buttonUnbindSelected.Click += new System.EventHandler(this.buttonUnbindSelected_Click);
             // 
@@ -185,6 +200,7 @@ namespace GlobalInputDemo
             this.listBoxHKLog.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.listBoxHKLog.Size = new System.Drawing.Size(200, 55);
             this.listBoxHKLog.TabIndex = 8;
+            this.toolTip.SetToolTip(this.listBoxHKLog, "Right-click to clear.");
             this.listBoxHKLog.MouseEnter += new System.EventHandler(this.listBox_MouseEnter);
             // 
             // contextMenuLogList
@@ -227,6 +243,7 @@ namespace GlobalInputDemo
             this.buttonBind.Size = new System.Drawing.Size(75, 23);
             this.buttonBind.TabIndex = 4;
             this.buttonBind.Text = "Bind";
+            this.toolTip.SetToolTip(this.buttonBind, "Bind the hotkey specified in the hotkey textbox.");
             this.buttonBind.UseVisualStyleBackColor = true;
             this.buttonBind.Click += new System.EventHandler(this.buttonBind_Click);
             // 
@@ -275,6 +292,7 @@ namespace GlobalInputDemo
             this.checkBoxMouseCallNext.Size = new System.Drawing.Size(97, 17);
             this.checkBoxMouseCallNext.TabIndex = 7;
             this.checkBoxMouseCallNext.Text = "Call Next Hook";
+            this.toolTip.SetToolTip(this.checkBoxMouseCallNext, "Whether to pass mouse hook input to the next hook in the hook chain.\r\n");
             this.checkBoxMouseCallNext.UseVisualStyleBackColor = true;
             // 
             // labelMousePos
@@ -311,6 +329,7 @@ namespace GlobalInputDemo
             this.listBoxMousing.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.listBoxMousing.Size = new System.Drawing.Size(412, 107);
             this.listBoxMousing.TabIndex = 3;
+            this.toolTip.SetToolTip(this.listBoxMousing, "Right-click to clear.");
             this.listBoxMousing.MouseEnter += new System.EventHandler(this.listBox_MouseEnter);
             // 
             // groupBox3
@@ -335,6 +354,7 @@ namespace GlobalInputDemo
             this.checkBoxKeyCallNext.Size = new System.Drawing.Size(97, 17);
             this.checkBoxKeyCallNext.TabIndex = 6;
             this.checkBoxKeyCallNext.Text = "Call Next Hook";
+            this.toolTip.SetToolTip(this.checkBoxKeyCallNext, "Whether to pass keyboard hook input to the next hook in the hook chain.");
             this.checkBoxKeyCallNext.UseVisualStyleBackColor = true;
             // 
             // checkBoxKeyboardHookEnabled
@@ -361,6 +381,7 @@ namespace GlobalInputDemo
             this.listBoxKeyboardHook.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.listBoxKeyboardHook.Size = new System.Drawing.Size(412, 107);
             this.listBoxKeyboardHook.TabIndex = 4;
+            this.toolTip.SetToolTip(this.listBoxKeyboardHook, "Right-click to clear.");
             this.listBoxKeyboardHook.MouseEnter += new System.EventHandler(this.listBox_MouseEnter);
             // 
             // tableLayoutPanel2
@@ -404,6 +425,7 @@ namespace GlobalInputDemo
             this.buttonFindOccupied.Size = new System.Drawing.Size(221, 23);
             this.buttonFindOccupied.TabIndex = 2;
             this.buttonFindOccupied.Text = "Find All";
+            this.toolTip.SetToolTip(this.buttonFindOccupied, "Find all occupied key hooks.\r\nBe them installed by this app or another.");
             this.buttonFindOccupied.UseVisualStyleBackColor = true;
             this.buttonFindOccupied.Click += new System.EventHandler(this.buttonFindOccupied_Click);
             // 
@@ -434,6 +456,7 @@ namespace GlobalInputDemo
             this.menuItemKeysVisualizer.Name = "menuItemKeysVisualizer";
             this.menuItemKeysVisualizer.Size = new System.Drawing.Size(125, 20);
             this.menuItemKeysVisualizer.Text = "Visualize Keys Enum";
+            this.menuItemKeysVisualizer.ToolTipText = "Opens a Form used to visualize the data of a Keys enum value.";
             this.menuItemKeysVisualizer.Click += new System.EventHandler(this.menuItemKeysVisualizer_Click);
             // 
             // keyboardHooker
@@ -447,17 +470,6 @@ namespace GlobalInputDemo
             this.mouseHooker.MouseMoved += new System.Windows.Forms.MouseEventHandler(this.mouseHooker_MouseMoved);
             this.mouseHooker.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouseHooker_MouseUp);
             this.mouseHooker.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouseHooker_MouseDown);
-            // 
-            // buttonCheckIfHooked
-            // 
-            this.buttonCheckIfHooked.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCheckIfHooked.Location = new System.Drawing.Point(262, 17);
-            this.buttonCheckIfHooked.Name = "buttonCheckIfHooked";
-            this.buttonCheckIfHooked.Size = new System.Drawing.Size(75, 23);
-            this.buttonCheckIfHooked.TabIndex = 10;
-            this.buttonCheckIfHooked.Text = "Check";
-            this.buttonCheckIfHooked.UseVisualStyleBackColor = true;
-            this.buttonCheckIfHooked.Click += new System.EventHandler(this.buttonCheckIfHooked_Click);
             // 
             // MainForm
             // 
@@ -513,6 +525,7 @@ namespace GlobalInputDemo
         private System.Windows.Forms.ListBox listBoxOccupied;
         private System.Windows.Forms.ToolStripMenuItem menuItemKeysVisualizer;
         private System.Windows.Forms.Button buttonCheckIfHooked;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }
 
