@@ -16,6 +16,7 @@ namespace GlobalInput.Keyboard.KeyNaming
         /// Gets the key-to-name binder used throughout this library to display keys or key
         /// sequences as user-friendly text.
         /// </summary>
+        /// <exception cref="ArgumentNullException"></exception>
         public static KeyNameBinderBase KeyNameBinder
         {
             get { return keyNameBinder; }
@@ -33,50 +34,51 @@ namespace GlobalInput.Keyboard.KeyNaming
         /// </summary>
         public static string KeyDataToString(this Keys keyData)
         {
-            if (keyData == Keys.None) return "None";
             var wordList = new List<string>();
-            if (keyData.HasFlag(Keys.Alt)) wordList.Add("Alt");
-            if (keyData.HasFlag(Keys.Shift)) wordList.Add("Shift");
-            if (keyData.HasFlag(Keys.Control)) wordList.Add("Control");
-            if (keyData.HasFlag(ExtraKeys.WinKeyModifier)) wordList.Add("Windows");
+
+            if (keyData.HasFlag(Keys.Alt))
+                wordList.Add(KeyNameBinder.GetFriendlyName(Keys.Alt) ?? Keys.Alt.ToString());
+
+            if (keyData.HasFlag(Keys.Shift))
+                wordList.Add(KeyNameBinder.GetFriendlyName(Keys.Shift) ?? Keys.Shift.ToString());
+
+            if (keyData.HasFlag(Keys.Control))
+                wordList.Add(KeyNameBinder.GetFriendlyName(Keys.Control) ?? Keys.Control.ToString());
+
+            if (keyData.HasFlag(ExtraKeys.WinKeyModifier))
+                wordList.Add(KeyNameBinder.GetFriendlyName(ExtraKeys.WinKeyModifier));
+
             Keys keyCode = keyData.GetKeyCode();
 
-            // Process numbers
-            if (keyCode >= Keys.D0 && keyCode <= Keys.D9)
+            string keyName = KeyNameBinder.GetFriendlyName(keyCode);
+
+            if (keyName != null)
+            {
+                wordList.Add(keyName);
+            }
+            else if (keyCode >= Keys.D0 && keyCode <= Keys.D9)
             {
                 wordList.Add(keyCode.ToString().Substring(1, 1));
             }
             else
             {
-                string keyName = KeyNameBinder.GetFriendlyName(keyCode);
-
-                if (keyName != null)
+                switch (keyCode)
                 {
-                    wordList.Add(keyName);
-                }
-                else
-                {
-                    switch (keyCode)
-                    {
-                        case Keys.Menu:
-                        case Keys.ShiftKey:
-                        case Keys.ControlKey:
-                            break;
+                    case Keys.Menu:
+                    case Keys.ShiftKey:
+                    case Keys.ControlKey:
+                        break;
 
-                        default:
-                            if (keyCode != Keys.None)
-                            {
-                                string word = keyCode.ToString();
+                    default:
+                        string word = keyCode.ToString();
 
-                                if (word.StartsWith("Oem"))
-                                    word = word.Remove(0, 3);
+                        if (word.StartsWith("Oem"))
+                            word = word.Remove(0, 3);
 
-                                TextInfo textInfo = KeyNameBinder.Culture.TextInfo;
-                                word = textInfo.ToTitleCase(word);
-                                wordList.Add(word);
-                            }
-                            break;
-                    }
+                        TextInfo textInfo = KeyNameBinder.Culture.TextInfo;
+                        word = textInfo.ToTitleCase(word);
+                        wordList.Add(word);
+                        break;
                 }
             }
 
@@ -87,7 +89,7 @@ namespace GlobalInput.Keyboard.KeyNaming
                 SB.Append(wordList[i]);
 
                 if (i != wordList.Count - 1)
-                    SB.Append(" + ");
+                    SB.Append(keyNameBinder.GetSeperator());
             }
 
             return SB.ToString();

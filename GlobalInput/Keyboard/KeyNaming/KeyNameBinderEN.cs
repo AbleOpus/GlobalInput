@@ -23,7 +23,9 @@ namespace GlobalInput.Keyboard.KeyNaming
         {
             switch (key)
             {
-                // Mods.
+                // Mods
+                case ExtraKeys.WinKeyModifier: return "Windows";
+                // Key code Mods.
                 case Keys.RShiftKey: return "Right Shift";
                 case Keys.LShiftKey: return "Left Shift";
                 case Keys.LControlKey: return "Left Ctrl";
@@ -67,6 +69,16 @@ namespace GlobalInput.Keyboard.KeyNaming
                 case Keys.Zoom: return "Zoom";
                 default: return null;
             }
+        }
+
+        /// <summary>
+        /// Gets the text that separates the modifiers from themselves, and the modifiers from
+        /// the key code. For instance: The separator value " + " will result in something like
+        /// "Keys.Control + Keys.Alt + Keys.C".
+        /// </summary>
+        public override string GetSeperator()
+        {
+            return " + ";
         }
     }
 }
