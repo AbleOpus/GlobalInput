@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using System.Windows.Forms;
@@ -10,11 +11,22 @@ namespace GlobalInput.Keyboard.KeyNaming
     /// </summary>
     public static class KeyNaming
     {
+        private static KeyNameBinderBase keyNameBinder = new KeyNameBinderEN();
         /// <summary>
         /// Gets the key-to-name binder used throughout this library to display keys or key
         /// sequences as user-friendly text.
         /// </summary>
-        public static KeyNameBinderBase KeyNameBinder { get; } = new KeyNameBinderEN();
+        public static KeyNameBinderBase KeyNameBinder
+        {
+            get { return keyNameBinder; }
+            set
+            {
+                if (value == null)
+                    throw new ArgumentNullException(nameof(value), "Value cannot be null.");
+
+                keyNameBinder = value;
+            }
+        }
 
         /// <summary>
         /// Converts the specified <see cref="Keys"/> to a shortcut string.
