@@ -21,6 +21,9 @@ namespace GlobalInput.Keyboard
         /// </summary>
         public HotkeyBinding RedundantBinding { get; }
 
+        /// <summary>
+        /// Gets whether the conflicting binding exists locally or in another application.
+        /// </summary>
         public bool IsLocalBindingConflict => ExistingBinding != null;
 
         /// <summary>

@@ -10,6 +10,10 @@ namespace GlobalInput.Keyboard.KeyNaming
     /// </summary>
     public static class KeyNaming
     {
+        /// <summary>
+        /// Gets the key-to-name binder used throughout this library to display keys or key
+        /// sequences as user-friendly text.
+        /// </summary>
         public static KeyNameBinderBase KayNameBinder { get; } = new KeyNameBinderEN();
 
         /// <summary>

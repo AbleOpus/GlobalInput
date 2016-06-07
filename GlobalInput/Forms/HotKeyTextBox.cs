@@ -145,6 +145,10 @@ namespace GlobalInput.Forms
             e.Handled = true;
         }
 
+        /// <summary>
+        /// Raises the <see cref="E:System.Windows.Forms.Control.PreviewKeyDown"/> event.
+        /// </summary>
+        /// <param name="e">A <see cref="T:System.Windows.Forms.PreviewKeyDownEventArgs"/> that contains the event data.</param>
         protected override void OnPreviewKeyDown(PreviewKeyDownEventArgs e)
         {
             base.OnPreviewKeyDown(e);
@@ -156,6 +160,13 @@ namespace GlobalInput.Forms
             }
         }
 
+        /// <summary>
+        /// Processes a key message and generates the appropriate control events.
+        /// </summary>
+        /// <returns>
+        /// true if the message was processed by the control; otherwise, false.
+        /// </returns>
+        /// <param name="m">A <see cref="T:System.Windows.Forms.Message"/>, passed by reference, that represents the window message to process. </param>
         protected override bool ProcessKeyEventArgs(ref Message m)
         {
             Keys key = (Keys)m.WParam;
