@@ -68,6 +68,8 @@
             this.Controls.Add(this.textBoxOutput);
             this.Controls.Add(this.hotkeyTextBox);
             this.Name = "KeysEnumVisualizerDialog";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.Text = "Keys Enum Visualizer";
             this.ResumeLayout(false);
             this.PerformLayout();

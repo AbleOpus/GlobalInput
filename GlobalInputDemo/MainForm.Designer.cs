@@ -454,8 +454,8 @@ namespace GlobalInputDemo
             // menuItemKeysVisualizer
             // 
             this.menuItemKeysVisualizer.Name = "menuItemKeysVisualizer";
-            this.menuItemKeysVisualizer.Size = new System.Drawing.Size(125, 20);
-            this.menuItemKeysVisualizer.Text = "Visualize Keys Enum";
+            this.menuItemKeysVisualizer.Size = new System.Drawing.Size(134, 20);
+            this.menuItemKeysVisualizer.Text = "Visualize Keys Enum...";
             this.menuItemKeysVisualizer.ToolTipText = "Opens a Form used to visualize the data of a Keys enum value.";
             this.menuItemKeysVisualizer.Click += new System.EventHandler(this.menuItemKeysVisualizer_Click);
             // 
