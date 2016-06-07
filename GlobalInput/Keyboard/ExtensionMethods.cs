@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace GlobalInput.Keyboard
@@ -6,6 +7,7 @@ namespace GlobalInput.Keyboard
     /// <summary>
     /// Extension methods for keyboard related functionality.
     /// </summary>
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public static class ExtensionMethods
     {
         /// <summary>
