@@ -18,7 +18,7 @@ namespace GlobalInput.Forms
         [Browsable(false)]
         public Keys HotkeyKeyCode
         {
-            get { return hotkey & Keys.KeyCode; }
+            get { return hotkey.GetKeyCode(); }
             set { Hotkey = HotkeyModifiers | value; }
         }
 
@@ -28,7 +28,7 @@ namespace GlobalInput.Forms
         [Browsable(false)]
         public Keys HotkeyModifiers
         {
-            get { return hotkey & Keys.Modifiers; }
+            get { return hotkey.GetModifiers(); }
             set { Hotkey =  HotkeyKeyCode | value; }
         }
 
@@ -50,7 +50,7 @@ namespace GlobalInput.Forms
 
                 if (!AllowToggleKeys && value.HasToggleKey())
                 {
-                    value = (value & Keys.Modifiers);
+                    value = value.GetModifiers();
                 }
 
                 hotkey = value;
@@ -107,7 +107,7 @@ namespace GlobalInput.Forms
 
                 if (!allowSoloModifiers)
                 {
-                    Hotkey = hotkey & Keys.KeyCode;
+                    Hotkey = hotkey.GetKeyCode();
                 }
             }
         }

@@ -68,9 +68,9 @@ namespace GlobalInput.Keyboard
         {
             if (keyData == Keys.None) return false;
 
-            Keys keyCode = keyData & Keys.KeyCode;
+            Keys keyCode = keyData.GetKeyCode();
 
-            bool hasModifiers = (keyData & Keys.Modifiers) != Keys.None;
+            bool hasModifiers = keyData.GetModifiers() != Keys.None;
             bool hasNonMod =
                 keyCode != Keys.None &&
                 keyCode != Keys.Menu &&
@@ -89,7 +89,7 @@ namespace GlobalInput.Keyboard
         }
 
         /// <summary>
-        /// Extracts the key code (or nonmods) from the specified keys.
+        /// Extracts the key code (or non-modifiers) from the specified keys.
         /// </summary>
         public static Keys GetKeyCode(this Keys keys)
         {

@@ -304,7 +304,7 @@ namespace GlobalInput.Keyboard
                     existingBinding, hotkeyBinding);
             }
 
-            Keys keyCode = hotkeyBinding.Hotkey & Keys.KeyCode;
+            Keys keyCode = hotkeyBinding.Hotkey.GetKeyCode();
             Modifiers mods = KeysToModifiers(hotkeyBinding.Hotkey);
 
             bool successful = NativeMethods.RegisterHotKey

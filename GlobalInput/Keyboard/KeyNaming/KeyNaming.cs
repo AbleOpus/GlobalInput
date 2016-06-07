@@ -27,7 +27,7 @@ namespace GlobalInput.Keyboard.KeyNaming
             if (keyData.HasFlag(Keys.Shift)) wordList.Add("Shift");
             if (keyData.HasFlag(Keys.Control)) wordList.Add("Control");
             if (keyData.HasFlag(ExtraKeys.WinKeyModifier)) wordList.Add("Windows");
-            Keys keyCode = keyData & Keys.KeyCode;
+            Keys keyCode = keyData.GetKeyCode();
 
             // Process numbers
             if (keyCode >= Keys.D0 && keyCode <= Keys.D9)

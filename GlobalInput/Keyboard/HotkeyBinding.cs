@@ -35,7 +35,7 @@ namespace GlobalInput.Keyboard
                     hotkey);
             }
 
-            if ((hotkey & Keys.KeyCode) == Keys.Packet)
+            if (hotkey.GetKeyCode() == Keys.Packet)
             {
                 throw new InvalidKeysValueException(
                     $@"the value of ""{hotkey}"" cannot be ""Packet"". Packet is not a real keyboard key.",
