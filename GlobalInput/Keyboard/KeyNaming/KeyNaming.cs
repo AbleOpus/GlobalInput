@@ -14,7 +14,7 @@ namespace GlobalInput.Keyboard.KeyNaming
         /// Gets the key-to-name binder used throughout this library to display keys or key
         /// sequences as user-friendly text.
         /// </summary>
-        public static KeyNameBinderBase KayNameBinder { get; } = new KeyNameBinderEN();
+        public static KeyNameBinderBase KeyNameBinder { get; } = new KeyNameBinderEN();
 
         /// <summary>
         /// Converts the specified <see cref="Keys"/> to a shortcut string.
@@ -36,7 +36,7 @@ namespace GlobalInput.Keyboard.KeyNaming
             }
             else
             {
-                string keyName = KayNameBinder.GetFriendlyName(keyCode);
+                string keyName = KeyNameBinder.GetFriendlyName(keyCode);
 
                 if (keyName != null)
                 {
@@ -59,7 +59,7 @@ namespace GlobalInput.Keyboard.KeyNaming
                                 if (word.StartsWith("Oem"))
                                     word = word.Remove(0, 3);
 
-                                TextInfo textInfo = KayNameBinder.Culture.TextInfo;
+                                TextInfo textInfo = KeyNameBinder.Culture.TextInfo;
                                 word = textInfo.ToTitleCase(word);
                                 wordList.Add(word);
                             }
