@@ -9,8 +9,16 @@ namespace GlobalInput.Keyboard.KeyNaming
     /// </summary>
     public class KeyNameBinderEN : KeyNameBinderBase
     {
+        /// <summary>
+        /// Gets the culture that indicates how the names will appear.
+        /// </summary>
         public override CultureInfo Culture => CultureInfo.GetCultureInfo("en");
 
+        /// <summary>
+        /// Gets a friendly name for the specified key code.
+        /// </summary>
+        /// <param name="key">The key to convert to a user-friendly string.</param>
+        /// <returns>A user-friendly string representing the name of the key.</returns>
         public override string GetFriendlyName(Keys key)
         {
             switch (key)
