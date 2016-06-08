@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace GlobalInput
 {
     internal static class NativeMethods
     {
+        [DllImport("User32.dll")]
+        internal static extern short GetKeyState(Keys keys);
+
         /// <summary>
         /// Installs an application-defined hook procedure into a hook chain. 
         /// You would install a hook procedure to monitor the system for certain 

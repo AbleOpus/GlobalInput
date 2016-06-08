@@ -11,6 +11,21 @@ namespace GlobalInput.Keyboard
     public static class ExtensionMethods
     {
         /// <summary>
+        /// Gets whether the specified hey is depressed (must be a key code).
+        /// </summary>
+        public static bool IsPressed(this Keys key)
+        {
+            short result = NativeMethods.GetKeyState(key);
+
+            switch (result)
+            {
+                case 0: return false;
+                case 1: return false;
+                default: return true;
+            }
+        }
+
+        /// <summary>
         /// Gets whether the key represents a letter in the alphabet.
         /// </summary>
         public static bool IsLetter(this Keys keys)
