@@ -190,6 +190,11 @@ public static Keys GetModifiers(Keys)
 /// Extracts the key-code from the specified keys.
 /// </summary>
 public static Keys GetKeyCode(Keys);
+
+/// <summary>
+/// Gets whether the specified hey is depressed (must be a key code).
+/// </summary>
+public static bool IsPressed(Keys);
 ```
 
 The __HotkeyTextBox__ is also useful. It allows users to quickly and easily input key sequences. The following are the intrinsic properties defined for this control:
