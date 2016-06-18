@@ -89,7 +89,7 @@ namespace GlobalInput
         /// <summary>
         /// Implements the retrieval of the thread ID to use with this hooker.
         /// </summary>
-        protected virtual uint GetThreadId()
+        protected virtual long GetThreadId()
         {
             return 0;
         }
@@ -108,7 +108,7 @@ namespace GlobalInput
             {
                 int hookTypeId = GetWindowsHookType();
                 IntPtr moduleHandle = NativeMethods.GetModuleHandle(currentModule.ModuleName);
-                hookId = NativeMethods.SetWindowsHookEx(hookTypeId, proc, moduleHandle, GetThreadId());
+                hookId = NativeMethods.SetWindowsHookEx(hookTypeId, proc, moduleHandle, (uint)GetThreadId());
             }
 
             if (hookId == IntPtr.Zero)
