@@ -149,47 +149,52 @@ The following __System.Windows.Forms.Keys__ extension methods may come in handy:
 /// <summary>
 /// Gets whether the key represents a letter in the alphabet.
 /// </summary>
-public static bool IsLetter(Keys)
+public static bool IsLetter()
 
 /// <summary>
 /// Gets whether the key represents a number (including number pad keys).
 /// </summary>
-public static bool IsNumber(Keys)
+public static bool IsNumber()
 
 /// <summary>
 /// Gets whether the key is toggleable (Scroll Lock, Caps Lock, or Num Lock).
 /// </summary>
-public static bool IsToggle(Keys)
+public static bool IsToggle()
 
 /// <summary>
 /// Gets whether the key is an arrow key.
 /// </summary>
-public static bool IsArrow(Keys)
+public static bool IsArrow()
 
 /// <summary>
 /// Gets whether the key is a function key.
 /// </summary>
-public static bool IsFKey(Keys)
+public static bool IsFKey()
 
 /// <summary>
 /// Gets whether the specified <see cref="Keys"/> has a toggle key.
 /// </summary>
-public static bool HasToggleKey(Keys)
+public static bool HasToggleKey()
 
 /// <summary>
 /// Gets whether the specified key contains only modifiers.
 /// </summary>
-public static bool IsOnlyModifiers(Keys)
+public static bool IsOnlyModifiers()
 
 /// <summary>
 /// Extracts the modifiers from the specified keys.
 /// </summary>
-public static Keys GetModifiers(Keys)
+public static Keys GetModifiers()
 
 /// <summary>
 /// Extracts the key-code from the specified keys.
 /// </summary>
-public static Keys GetKeyCode(Keys);
+public static Keys GetKeyCode();
+
+/// <summary>
+/// Gets whether the specified hey is depressed (must be a key code).
+/// </summary>
+public static bool IsPressed();
 ```
 
 The __HotkeyTextBox__ is also useful. It allows users to quickly and easily input key sequences. The following are the intrinsic properties defined for this control:
