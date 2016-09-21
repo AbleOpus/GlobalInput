@@ -41,7 +41,6 @@ namespace GlobalInputDemo
             System.Windows.Forms.Label label3;
             System.Windows.Forms.Label label2;
             System.Windows.Forms.Label label1;
-            System.Windows.Forms.GroupBox groupBoxMouse;
             System.Windows.Forms.GroupBox groupBox3;
             System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
             System.Windows.Forms.GroupBox groupBox2;
@@ -56,6 +55,7 @@ namespace GlobalInputDemo
             this.menuItemClear = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonBind = new System.Windows.Forms.Button();
             this.hotkeyTextBox = new GlobalInput.Forms.HotkeyTextBox();
+            this.groupBoxMouse = new System.Windows.Forms.GroupBox();
             this.checkBoxMouseCallNext = new System.Windows.Forms.CheckBox();
             this.labelMousePos = new System.Windows.Forms.Label();
             this.checkBoxMouseHookerEnabled = new System.Windows.Forms.CheckBox();
@@ -74,7 +74,6 @@ namespace GlobalInputDemo
             label3 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
-            groupBoxMouse = new System.Windows.Forms.GroupBox();
             groupBox3 = new System.Windows.Forms.GroupBox();
             tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             groupBox2 = new System.Windows.Forms.GroupBox();
@@ -82,7 +81,7 @@ namespace GlobalInputDemo
             groupBox1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             this.contextMenuLogList.SuspendLayout();
-            groupBoxMouse.SuspendLayout();
+            this.groupBoxMouse.SuspendLayout();
             groupBox3.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -272,17 +271,17 @@ namespace GlobalInputDemo
             // 
             // groupBoxMouse
             // 
-            groupBoxMouse.Controls.Add(this.checkBoxMouseCallNext);
-            groupBoxMouse.Controls.Add(this.labelMousePos);
-            groupBoxMouse.Controls.Add(this.checkBoxMouseHookerEnabled);
-            groupBoxMouse.Controls.Add(this.listBoxMousing);
-            groupBoxMouse.Dock = System.Windows.Forms.DockStyle.Fill;
-            groupBoxMouse.Location = new System.Drawing.Point(3, 325);
-            groupBoxMouse.Name = "groupBoxMouse";
-            groupBoxMouse.Size = new System.Drawing.Size(424, 155);
-            groupBoxMouse.TabIndex = 4;
-            groupBoxMouse.TabStop = false;
-            groupBoxMouse.Text = "Mouse";
+            this.groupBoxMouse.Controls.Add(this.checkBoxMouseCallNext);
+            this.groupBoxMouse.Controls.Add(this.labelMousePos);
+            this.groupBoxMouse.Controls.Add(this.checkBoxMouseHookerEnabled);
+            this.groupBoxMouse.Controls.Add(this.listBoxMousing);
+            this.groupBoxMouse.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxMouse.Location = new System.Drawing.Point(3, 325);
+            this.groupBoxMouse.Name = "groupBoxMouse";
+            this.groupBoxMouse.Size = new System.Drawing.Size(424, 155);
+            this.groupBoxMouse.TabIndex = 4;
+            this.groupBoxMouse.TabStop = false;
+            this.groupBoxMouse.Text = "Mouse";
             // 
             // checkBoxMouseCallNext
             // 
@@ -393,7 +392,7 @@ namespace GlobalInputDemo
             tableLayoutPanel2.ColumnCount = 1;
             tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             tableLayoutPanel2.Controls.Add(groupBox1, 0, 0);
-            tableLayoutPanel2.Controls.Add(groupBoxMouse, 0, 2);
+            tableLayoutPanel2.Controls.Add(this.groupBoxMouse, 0, 2);
             tableLayoutPanel2.Controls.Add(groupBox3, 0, 1);
             tableLayoutPanel2.Location = new System.Drawing.Point(12, 30);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -489,8 +488,8 @@ namespace GlobalInputDemo
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             this.contextMenuLogList.ResumeLayout(false);
-            groupBoxMouse.ResumeLayout(false);
-            groupBoxMouse.PerformLayout();
+            this.groupBoxMouse.ResumeLayout(false);
+            this.groupBoxMouse.PerformLayout();
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
             tableLayoutPanel2.ResumeLayout(false);
@@ -527,6 +526,7 @@ namespace GlobalInputDemo
         private System.Windows.Forms.ToolStripMenuItem menuItemKeysVisualizer;
         private System.Windows.Forms.Button buttonCheckIfHooked;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.GroupBox groupBoxMouse;
     }
 }
 

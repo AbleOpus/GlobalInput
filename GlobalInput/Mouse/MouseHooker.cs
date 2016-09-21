@@ -22,6 +22,12 @@ namespace GlobalInput.Mouse
         }
 
         /// <summary>
+        /// Gets the buttons that are currently depressed.
+        /// </summary>
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public MouseButtons ButtonsDown { get; private set; }
+
+        /// <summary>
         /// Gets or sets an inclusive message type filter, to disable and enable the invocation
         ///  of certain events, without unsubscribing to them, or unhooking the low-level hooker.
         /// </summary>
@@ -73,24 +79,28 @@ namespace GlobalInput.Mouse
                     return; // For easier debugging. Data may be written to output window below.
 
                 case MouseMessages.RightButtonDown:
+                    ButtonsDown |= MouseButtons.Right;
                     if (!MessageFilter.HasFlag(MouseMessageTypes.ButtonDown)) break;
                     args = new MouseEventArgs(MouseButtons.Right, 0, mouseData.Point.X, mouseData.Point.Y, 0);
                     MouseDown?.Invoke(this, args);
                     break;
 
                 case MouseMessages.LeftButtonDown:
+                    ButtonsDown |= MouseButtons.Left;
                     if (!MessageFilter.HasFlag(MouseMessageTypes.ButtonDown)) break;
                     args = new MouseEventArgs(MouseButtons.Left, 0, mouseData.Point.X, mouseData.Point.Y, 0);
                     MouseDown?.Invoke(this, args);
                     break;
 
                 case MouseMessages.RightButtonUp:
+                    ButtonsDown &= ~MouseButtons.Right;
                     if (!MessageFilter.HasFlag(MouseMessageTypes.ButtonUp)) break;
                     args = new MouseEventArgs(MouseButtons.Right, 0, mouseData.Point.X, mouseData.Point.Y, 0);
                     MouseUp?.Invoke(this, args);
                     break;
 
                 case MouseMessages.LeftButtonUp:
+                    ButtonsDown &= ~MouseButtons.Left;
                     if (!MessageFilter.HasFlag(MouseMessageTypes.ButtonUp)) break;
                     args = new MouseEventArgs(MouseButtons.Left, 0, mouseData.Point.X, mouseData.Point.Y, 0);
                     MouseUp?.Invoke(this, args);
@@ -104,24 +114,32 @@ namespace GlobalInput.Mouse
                     break;
 
                 case MouseMessages.WheelDown:
+                    ButtonsDown |= MouseButtons.Middle;
                     if (!MessageFilter.HasFlag(MouseMessageTypes.Wheel)) break;
                     args = new MouseEventArgs(MouseButtons.Middle, 0, mouseData.Point.X, mouseData.Point.Y, 0);
                     MouseDown?.Invoke(this, args);
                     break;
 
                 case MouseMessages.WheelUp:
+                    ButtonsDown &= ~MouseButtons.Middle;
                     if (!MessageFilter.HasFlag(MouseMessageTypes.Wheel)) break;
                     args = new MouseEventArgs(MouseButtons.Middle, 0, mouseData.Point.X, mouseData.Point.Y, 0);
                     MouseUp?.Invoke(this, args);
                     break;
 
                 case MouseMessages.XButtonDown:
-                    var mouseButton = (MouseXButtons)mouseData.MouseData == MouseXButtons.X1 ? MouseButtons.XButton1 : MouseButtons.XButton2;
+                    bool isX1 = (MouseXButtons)mouseData.MouseData == MouseXButtons.X1;
+                    var mouseButton = isX1 ? MouseButtons.XButton1 : MouseButtons.XButton2;
+                    if (isX1) ButtonsDown |= MouseButtons.XButton1;
+                    else ButtonsDown |= MouseButtons.XButton2;
                     MouseDown?.Invoke(this, new MouseEventArgs(mouseButton, 0, mouseData.Point.X, mouseData.Point.Y, 0));
                     break;
 
                 case MouseMessages.XButtonUp:
-                    mouseButton = (MouseXButtons)mouseData.MouseData == MouseXButtons.X1 ? MouseButtons.XButton1 : MouseButtons.XButton2;
+                    isX1 = (MouseXButtons)mouseData.MouseData == MouseXButtons.X1;
+                    mouseButton = isX1 ? MouseButtons.XButton1 : MouseButtons.XButton2;
+                    if (isX1) ButtonsDown &= ~MouseButtons.XButton1;
+                    else ButtonsDown &= ~MouseButtons.XButton2;
                     MouseUp?.Invoke(this, new MouseEventArgs(mouseButton, 0, mouseData.Point.X, mouseData.Point.Y, 0));
                     break;
             }

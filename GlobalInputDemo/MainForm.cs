@@ -151,6 +151,7 @@ namespace GlobalInputDemo
         private void mouseHooker_MouseDown(object sender, MouseEventArgs e)
         {
             listBoxMousing.Items.Insert(0, MouseEventArgsToString(e, true));
+            groupBoxMouse.Text = $"Mouse ({mouseHooker.ButtonsDown})";
         }
 
         private void mouseHooker_MouseMoved(object sender, MouseEventArgs e)
@@ -161,6 +162,7 @@ namespace GlobalInputDemo
         private void mouseHooker_MouseUp(object sender, MouseEventArgs e)
         {
             listBoxMousing.Items.Insert(0, MouseEventArgsToString(e, false));
+            groupBoxMouse.Text = $"Mouse ({mouseHooker.ButtonsDown})";
         }
 
         private void mouseHooker_MouseWheel(object sender, MouseEventArgs e)
